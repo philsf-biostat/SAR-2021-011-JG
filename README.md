@@ -2,14 +2,14 @@
 
 Objetivo
 
-Análise Estatística para PESSOA (LOCAL, aaaa)
+Análise Estatística para Josir Gomes (Doutorado IBICT/UFRJ, 2021)
 
 ## Análises realizadas
 
 1. Análise descritiva
-1. Análise inferencial
-1. Análise de poder
-1. Modelagem estatística
+1. Modelagem não-supervisionada
+<!-- 1. Análise inferencial -->
+<!-- 1. Análise de poder -->
 
 ## Documentos
 
