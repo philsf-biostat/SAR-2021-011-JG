@@ -1,4 +1,4 @@
-# título
+# Clusterização hierárquica para determinação do número ótimo de clusters para classificação de deputados federais como bancada evangélica
 
 1. Avaliar número ideal de clusters de acordo em um dendograma de clusterização hierárquica, para uso do kmeans.
 1. Avaliar em particular a acurácia do agrupamento aplicado em 2 clusters com a proposta de identificar os deputados da bancada evangélica vs outros, de acordo com a classificação pré estabelecida.
