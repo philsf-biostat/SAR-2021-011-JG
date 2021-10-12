@@ -59,6 +59,9 @@ kable(history)
 
 ## Contexto
 
+Avaliação da qualidade do agrupamento de acordo com dois critérios: altura da árvore e número putativo de clusters.
+Criação do elbow plot para auxiliar a tomada de decisão no uso do kmeans.
+
 ## Objetivos
 
 1. Avaliar número ideal de clusters de acordo em um dendograma de clusterização hierárquica, para uso do kmeans.
