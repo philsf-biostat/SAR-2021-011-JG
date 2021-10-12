@@ -104,6 +104,11 @@ O desfecho primário está definido como a classificação entre deputados da ba
 
 ## Covariáveis
 
+As seguintes características dos deputados federais serão consideradas para inclusão na análise: Número de votos recebidos, posicionamento político, capilaridade, a unidade da federação, o partido (sigla), o sexo e se é o primeiro mandato.
+As seguintes características dos partidos serão consideradas para inclusão na análise:  decil do número de deputados eleitos e decil do número de filiados.
+
+As receitas discriminadas em suas diversas origens não serão consideradas na análise, devido à baixa representatividade de valores em suas distribuições (figura A1).
+
 # Métodos estatísticos
 
 ## Análises estatísticas
@@ -132,6 +137,9 @@ As distribuições serão sumarizadas em tabelas e visualizadas em gráficos exp
 Não serão realizadas análises inferenciais.
 
 ### Modelagem estatística
+
+Será ajustado um modelo de clusters hierárquico aos dados numéricos.
+O dendograma associado ao modelo de agrupamento será cortado em diferentes alturas e números de clusters para obter o número ótimo de clusters que melhor explique a classificação do desfecho primário.
 
 ## Significância e Intervalos de Confiança
 
