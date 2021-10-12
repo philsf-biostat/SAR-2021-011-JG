@@ -1,8 +1,9 @@
 # título
 
-Objetivo
+1. Avaliar número ideal de clusters de acordo em um dendograma de clusterização hierárquica, para uso do kmeans.
+1. Avaliar em particular a acurácia do agrupamento aplicado em 2 clusters com a proposta de identificar os deputados da bancada evangélica vs outros, de acordo com a classificação pré estabelecida.
 
-Análise Estatística para Josir Gomes (Doutorado IBICT/UFRJ, 2021)
+Análise Estatística para Josir Gomes (Doutorado IBICT/UFRJ, 2021).
 
 ## Análises realizadas
 
