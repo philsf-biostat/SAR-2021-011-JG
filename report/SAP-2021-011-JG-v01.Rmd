@@ -51,9 +51,9 @@ kable(history)
 
 # Lista de abreviaturas
 
-- d: tamanho de efeito D de Cohen
+<!-- - d: tamanho de efeito D de Cohen -->
 - DP: Desvio padrão
-- IIQ: Intervalo Interquartílico
+<!-- - IIQ: Intervalo Interquartílico -->
 
 # Introdução
 
