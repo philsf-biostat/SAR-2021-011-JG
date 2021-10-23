@@ -79,7 +79,7 @@ Todas as variáveis da tabela de dados analíticos foram identificadas de acordo
 Estas identificações possibilitarão a criação de tabelas de resultados com qualidade de produção final.
 
 Foram feitos ajustes de escala em variáveis para facilitar a interpretação das estimativas da análise de regressão.
-O número de votos foi padronizado em votos por 100 mil, a capilaridade foi padronizada em faixas de 10% e a Receita total em milhões de reais.
+O número de votos foi padronizado em votos por 100 mil, a capilaridade foi padronizada em faixas de 10% e as receitas em milhões de reais.
 
 Uma observação não tinha o número de votos registrada, e foi removida para a análise de clusters.
 
@@ -100,7 +100,8 @@ O desfecho primário está definido como a classificação entre deputados da ba
 As seguintes características dos deputados federais foram consideradas para inclusão na análise: Número de votos recebidos, posicionamento político, capilaridade, a unidade da federação, o partido (sigla), o sexo e se é o primeiro mandato.
 As seguintes características dos partidos foram consideradas para inclusão na análise:  decil do número de deputados eleitos e decil do número de filiados.
 
-As receitas discriminadas em suas diversas origens não foram consideradas na análise, devido à baixa representatividade de valores em suas distribuições (figura A1).
+As receitas discriminadas em suas diversas origens não foram consideradas na análise principal, devido à baixa representatividade de valores em suas distribuições (figura A1).
+O impacto da exclusão destas variáveis nos clusters foi avaliada em uma análise de sensibilidade.
 
 ## Análises Estatísticas
 
