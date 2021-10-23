@@ -80,13 +80,61 @@ Esta análise foi realizada utilizando-se o software `R` versão `r getRversion(
 # Resultados
 
 ## Análise descritiva
+<!-- dados da tabela adhoc em describe.R -->
+Em 2018 foram eleitos 116 (23% dos 512 deputados avaliados) deputados federais que se autodenominaram evangélicos.
+Destes,
+29 (25%) estão filiados à igreja AD,
+21 (18%) à igreja IURD e
+15 (13%) à igreja Batista.
+Observa-se nas duas classes de deputados federais uma predominância do sexo masculino, com
+91 (78%) homens entre os deputados evangélicos e
+346 (87%) homens dentre as demais classes
+(Tabela 1).
+O deputado federal evangélico parece ter posicionamento político mais alinhado à direita, com índice de Power e Silveira-Rodrigues médio 0.7.
+
+A maior parte dos deputados federais eleitos em 2018 foram eleitos em primeiro mandato.
+Dentro os deputados evangélicos
+94 (81%) se elegeram pela primeira vez e
+22 (19%) foram reeleitos.
+Os candidatos evangélicos obtiveram, na média, 127 mil votos,
+quando os outros deputados obtiveram 97 mil votos.
+Apesar da discrepância nas médias de performance de votos, a variabilidade deste indicador é substancialmente maior na classe de deputados evangélicos, com desvio padrão superior à média.
+A variabilidade entre os dois grupos pode ser comparada pelo CV -- o CV dos deputados evangélicos foi 157% enquanto nos outros foi 60%.
+Ambos os grupos tiveram capilaridade semelhante, em torno de 0.8 na média.
+
+Os partidos tiveram desempenho comparáveis, onde tanto
+o decil do número de deputados eleitos como
+o decil do número de filiados
+ficaram na faixa entre 0,7 e 0,8 (Tabela 1).
+Os partidos que mais abrigaram os deputados evangélicos eleitos foram o
+PRB com	23 (20%) deputados,
+PSL com	16 (14%),
+PR com	10 (8.6%) e
+os partidos com menor representatividade desta classe foram
+PATRIOTA,
+PMN,
+PRP e
+PTC
+todos com 1 (0.9%) deputado.
 
 ```{r tab_desc}
 tab_desc %>%
     as_kable(
     align = "lccc",
-    caption = "**Tabela 1** caption"
+    caption = "**Tabela 1** Características dos deputados federais eleitos em 2018."
   )
+```
+
+A receita total obtida pelos deputados evangélicos foi comparável aos demais deputados, com ambas as classes atingindo receita média superior a 1 milhão de reais.
+Os deputados evangélicos obtiveram, na média, 1.08 milhões de reais (desvio padrão 0.7 milhões, CV 64%) e
+os demais deputados 1.12 milhões de reais (desvio padrão 0.7 milhões, CV 60%).
+A amplitude das receitas observadas variou entre
+R\$ 21648 e R\$ 2507377 entre os deputados evangélicos e
+R\$ 12075 e R\$ 2500500 entre os demais (Tabela 1 e Figura 1).
+
+```{r fig1, fig.cap="**Figura 1** Distribuição da receita total dos deputados federais eleitos em 2018."}
+# ![Age](../figures/receita_total.png)
+knitr::include_graphics("../figures/receita_total.png", error = FALSE)
 ```
 
 ## Análise inferencial
