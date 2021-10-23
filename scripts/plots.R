@@ -68,7 +68,15 @@ gg.elbow <- elbow %>%
   ggplot(aes(k, withinss)) +
   geom_hline(yintercept = cl[c(1:kmax)], lty = 2, alpha = .2) +
   scale_x_continuous(breaks = 1:kmax) +
-  # geom_hline(yintercept = cl[3], lty = 2, alpha = .8, color = "red") +
   geom_hline(yintercept = cl[4], lty = 2, alpha = .8, color = "red") +
+  geom_line(color = ff.col) +
+  geom_point(color = ff.col)
+
+gg.elbow.fd <- elbow.fd %>%
+  ggplot(aes(k, withinss)) +
+  geom_hline(yintercept = cl.fd[c(1:kmax)], lty = 2, alpha = .2) +
+  scale_x_continuous(breaks = 1:kmax) +
+  geom_hline(yintercept = cl.fd[3], lty = 2, alpha = .8, color = "red") +
+  # geom_hline(yintercept = cl.fd[5], lty = 2, alpha = .8, color = "orange") +
   geom_line(color = ff.col) +
   geom_point(color = ff.col)

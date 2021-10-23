@@ -7,11 +7,8 @@
 
 # kmeans ------------------------------------------------------------------
 
-# nb <- data.raw %>%
 nb <- analytical %>%
-  select(evangelico, where(is.numeric)) %>%
-  drop_na()
-
+  select(evangelico, where(is.numeric))
 
 cl <- c()
 
@@ -28,6 +25,24 @@ nb$km4 <- kmeans(nb[, -1], 4)$cluster
 elbow <- tibble(k = 1:kmax, withinss = cl)
 
 # cluster hierárquico -----------------------------------------------------
+
+# sensibilidade - full dataset --------------------------------------------
+
+nb.fd <- data.raw %>%
+  select(evangelico, where(is.numeric), -starts_with("perc")) %>%
+  mutate(posicao = posicao +1) # recentrar posicao entre 0 e 2
+
+cl.fd <- c()
+
+for (i in 1:kmax) {
+  cl.fd[i] <- kmeans(nb.fd[, -1], centers = i)$tot.withinss
+}
+
+nb.fd$km2 <- kmeans(nb.fd[, -1], 2)$cluster
+nb.fd$km4 <- kmeans(nb.fd[, -1], 4)$cluster
+
+# dataframe para elbow plot
+elbow.fd <- tibble(k = 1:kmax, withinss = cl.fd)
 
 # diagnosticos ------------------------------------------------------------
 
