@@ -176,20 +176,16 @@ R\$ 12075 e R\$ 2500500 entre os demais (Tabela 1 e Figura 1).
 knitr::include_graphics("../figures/receita_total.png", error = FALSE)
 ```
 
-## Análise inferencial
+## Determinação de clusters para k-means: elbow plot
 
 ```{r fig2, fig.cap="**Figura 2** Elbow plot do método k-means."}
 # ![Age](../figures/elbow.png)
 knitr::include_graphics("../figures/elbow.png", error = FALSE)
 ```
 
-```{r tab_inf}
-# tab_inf %>%
-#     as_kable(
-#     align = "lccc",
-#     caption = "**Tabela 2** caption"
-#   )
-```
+## Determinação de clusters para k-means: cluster hierárquico
+
+## Sensibilidade da análise à remoção de variáveis
 
 # Observações e limitações
 
