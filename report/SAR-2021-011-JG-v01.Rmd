@@ -57,6 +57,8 @@ kable(history)
 
 ## Recepção e tratamento dos dados
 
+Uma observação não tinha o número de votos registrada, e foi removida para a análise de clusters.
+
 # Metodologia
 
 ```{r results, include=FALSE}

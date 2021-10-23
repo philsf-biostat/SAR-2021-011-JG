@@ -18,7 +18,9 @@ data.raw <- data.raw %>%
   #   filter() %>%
   select(
     -eleito,
-  )
+  ) %>%
+  # dropar variáveis com NA que não podem ser usadas na clusterização
+  drop_na(num_votos)
 
 # data wrangling ----------------------------------------------------------
 
