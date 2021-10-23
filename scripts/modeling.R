@@ -46,3 +46,9 @@ elbow.fd <- tibble(k = 1:kmax, withinss = cl.fd)
 
 # diagnosticos ------------------------------------------------------------
 
+km2_a <- analytical %>% select_if(is.numeric) %>% kmeans(centers = 2)
+km2_t <- data.raw   %>% select_if(is.numeric) %>% kmeans(centers = 2)
+
+# kmeans com 2 clusters
+CrossTable(km2_a$cluster, analytical$evangelico, mcnemar = TRUE)
+CrossTable(km2_t$cluster, data.raw$evangelico, mcnemar = TRUE)
