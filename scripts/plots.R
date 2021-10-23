@@ -25,7 +25,7 @@ gg.receitas <- data.raw %>%
   select(contains("receita")) %>%
   pivot_longer(everything(), names_prefix = "receita_") %>%
   ggplot(aes(value)) +
-  geom_histogram(binwidth = 100000, fill = ff.col) +
+  geom_histogram(binwidth = .5, fill = ff.col) +
   facet_wrap(~name) +
   labs(x = "", y = "", subtitle = "Distribuição das receitas, por origem")
 
@@ -63,3 +63,12 @@ gg.rec_total <- gg +
   xlab(attr(analytical$total_receita, "label")) +
   ylab("") +
   facet_wrap(~ evangelico)
+
+gg.elbow <- elbow %>%
+  ggplot(aes(k, withinss)) +
+  geom_hline(yintercept = cl[c(1:kmax)], lty = 2, alpha = .2) +
+  scale_x_continuous(breaks = 1:kmax) +
+  # geom_hline(yintercept = cl[3], lty = 2, alpha = .8, color = "red") +
+  geom_hline(yintercept = cl[4], lty = 2, alpha = .8, color = "red") +
+  geom_line(color = ff.col) +
+  geom_point(color = ff.col)
