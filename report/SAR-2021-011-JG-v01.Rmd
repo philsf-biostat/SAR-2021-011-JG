@@ -103,7 +103,7 @@ As seguintes características dos partidos foram consideradas para inclusão na 
 As receitas discriminadas em suas diversas origens não foram consideradas na análise principal, devido à baixa representatividade de valores em suas distribuições (figura A1).
 O impacto da exclusão destas variáveis nos clusters foi avaliada em uma análise de sensibilidade.
 
-## Análises Estatísticas
+## Análises Realizadas
 
 As características dos deputados foram descritas, por estado, como
 média (DP)
@@ -191,7 +191,7 @@ knitr::include_graphics("../figures/elbow.png", error = FALSE)
 #   )
 ```
 
-# Exceções e Observações
+# Observações e limitações
 
 # Conclusões
 
