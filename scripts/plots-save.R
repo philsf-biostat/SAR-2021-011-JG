@@ -13,7 +13,7 @@ units <- "cm"
 
 # save plots --------------------------------------------------------------
 
-ggsave(filename = "figures/receitas.png", plot = gg.receitas, height = 16.5, width = 16.5, units = units)
+ggsave(filename = "figures/receitas.png", plot = gg.receitas, height = 16, width = 16, units = units)
 ggsave(filename = "figures/receita_total.png", plot = gg.rec_total, height = height, width = width, units = units)
 ggsave(filename = "figures/elbow.png", plot = gg.elbow, height = height, width = width, units = units)
 ggsave(filename = "figures/elbow_full.png", plot = gg.elbow.fd, height = height, width = width, units = units)

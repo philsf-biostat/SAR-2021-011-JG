@@ -22,11 +22,12 @@ gg <- ggplot(analytical) +
 
 gg.receitas <- data.raw %>%
   rename(receita_total = total_receita) %>%
-  select(contains("receita")) %>%
-  pivot_longer(everything(), names_prefix = "receita_") %>%
-  ggplot(aes(value)) +
-  geom_histogram(binwidth = .5, fill = ff.col) +
-  facet_wrap(~name) +
+  select(evangelico, contains("receita")) %>%
+  pivot_longer(-evangelico, names_prefix = "receita_") %>%
+  ggplot(aes(value, ..density.., fill = evangelico)) +
+  geom_histogram(binwidth = .5) +
+  scale_fill_brewer(palette = ff.pal) +
+  facet_wrap(~name + evangelico, ncol = 4) +
   labs(x = "", y = "", subtitle = "Distribuição das receitas, por origem")
 
 # data.raw %>%
