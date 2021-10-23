@@ -18,7 +18,9 @@ data.raw <- data.raw %>%
   #   filter() %>%
   select(
     -eleito,
-  )
+  ) %>%
+  # dropar variáveis com NA que não podem ser usadas na clusterização
+  drop_na(num_votos)
 
 # data wrangling ----------------------------------------------------------
 
@@ -29,6 +31,19 @@ data.raw <- data.raw %>%
     sexo = factor(sexo, labels = c("Masculino", "Feminino")),
     evangelico = factor(evangelico, labels = c("Outros", "Evangélico")),
     igreja = fct_rev(fct_infreq(igreja)),
+    total_receita = total_receita/1000000,
+    num_votos = num_votos/1000000,
+    filiados = filiados/1000000,
+    receita_agp = receita_agp/1000000,
+    receita_agr = receita_agr/1000000,
+    receita_com = receita_com/1000000,
+    receita_fin = receita_fin/1000000,
+    receita_inf = receita_inf/1000000,
+    receita_ind = receita_ind/1000000,
+    receita_pf = receita_pf/1000000,
+    receita_rp = receita_rp/1000000,
+    receita_ser = receita_ser/1000000,
+    # capilaridade = capilaridade*10,
   )
 
 # labels ------------------------------------------------------------------
@@ -41,10 +56,10 @@ data.raw <- data.raw %>%
     primeira = "Releição vs primeiro mandato",
     sexo = "Sexo",
     evangelico = "Evangélico",
-    num_votos = "Total de votos recebidos",
+    num_votos = "Votos (100k)",
     decil_filiados = "Decil do núm. de filiados",
     decil_deputados = "Decil do núm. de deputados",
-    total_receita = "Total da receita recebida",
+    total_receita = "Receita total (milhão R$)",
     posicao = "Índice de Power e Silveira-Rodrigues",
     igreja = "Nome da Igreja",
   )
