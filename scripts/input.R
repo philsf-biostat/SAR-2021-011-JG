@@ -30,8 +30,18 @@ data.raw <- data.raw %>%
     evangelico = factor(evangelico, labels = c("Outros", "Evangélico")),
     igreja = fct_rev(fct_infreq(igreja)),
     total_receita = total_receita/1000000,
-    num_votos = num_votos/100000,
-    capilaridade = capilaridade*10,
+    num_votos = num_votos/1000000,
+    filiados = filiados/1000000,
+    receita_agp = receita_agp/1000000,
+    receita_agr = receita_agr/1000000,
+    receita_com = receita_com/1000000,
+    receita_fin = receita_fin/1000000,
+    receita_inf = receita_inf/1000000,
+    receita_ind = receita_ind/1000000,
+    receita_pf = receita_pf/1000000,
+    receita_rp = receita_rp/1000000,
+    receita_ser = receita_ser/1000000,
+    # capilaridade = capilaridade*10,
   )
 
 # labels ------------------------------------------------------------------
@@ -40,7 +50,7 @@ data.raw <- data.raw %>%
   set_variable_labels(
     partido = "Partido",
     uf = "UF",
-    capilaridade = "Capilaridade (10%)",
+    capilaridade = "Capilaridade",
     primeira = "Releição vs primeiro mandato",
     sexo = "Sexo",
     evangelico = "Evangélico",
