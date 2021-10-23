@@ -139,6 +139,11 @@ knitr::include_graphics("../figures/receita_total.png", error = FALSE)
 
 ## Análise inferencial
 
+```{r fig2, fig.cap="**Figura 2** Elbow plot do método k-means."}
+# ![Age](../figures/elbow.png)
+knitr::include_graphics("../figures/elbow.png", error = FALSE)
+```
+
 ```{r tab_inf}
 # tab_inf %>%
 #     as_kable(
@@ -160,9 +165,17 @@ knitr::include_graphics("../figures/receita_total.png", error = FALSE)
 
 ## Análise exploratória de dados
 
-```{r A1, fig.cap="**Figura A1** Distribuição da idade na população do estudo."}
-# ![Age](../figures/distr_age.png)
-# knitr::include_graphics("../figures/distr_age.png", error = FALSE)
+```{r A1, fig.cap="**Figura A1** Distribuição das receitas de deputados federais, por origem (agp = receita que veio do Partido ao invés de apoiadores privados (empresariais ou não); agr = setor agrícola; com = setor do comércio; fin = setor específico dos bancos e outras instituições financeiras e imobiliárias; ind = setores da indústria; inf = setor de infraestrutura; pf = pessoa física; rp = recursos próprios; ser = setor de serviços). "}
+
+# ![Age](../figures/receitas.png)
+knitr::include_graphics("../figures/receitas.png", error = FALSE)
+```
+
+```{r A2, fig.cap="**Figura A2** Elbow plot do método k-means, com o full dataset."}
+
+# ![elbow full](../figures/elbow_full.png)
+knitr::include_graphics("../figures/elbow_full.png", error = FALSE)
+
 ```
 
 ## Disponibilidade
