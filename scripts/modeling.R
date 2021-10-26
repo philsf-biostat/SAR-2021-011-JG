@@ -12,8 +12,8 @@ km_ss <- function(data, k) {
   kmeans(data, centers = k)$tot.withinss
 }
 
-hc_sil <- function(hc, k) {
-  s <- silhouette(cutree(hc, k = k), dist = nb.dist)
+hc_sil <- function(hc, k, hc_dist) {
+  s <- silhouette(cutree(hc, k = k), dist = hc_dist)
   mean(s[, 3])
 }
 
@@ -39,7 +39,7 @@ hc.c <- hclust(nb.dist, method = "complete")
 
 avg_sil_hc <- tibble(
   k = 2:kmax,
-  avg_sil = map_dbl(2:kmax, hc_sil, hc = hc.m)
+  avg_sil = map_dbl(2:kmax, hc_sil, hc = hc.c, hc_dist = nb.dist)
 )
 
 # sensibilidade - full dataset --------------------------------------------
@@ -58,7 +58,7 @@ nb.dist.fd <- dist(nb.fd[, -1])
 hc.c.fd <- hclust(nb.dist.fd, method = "complete")
 avg_sil_hc.fd <- tibble(
   k = 2:kmax,
-  avg_sil = map_dbl(2:kmax, hc_sil, hc = hc.m.fd)
+  avg_sil = map_dbl(2:kmax, hc_sil, hc = hc.c.fd, hc_dist = nb.dist.fd)
 )
 
 # diagnosticos ------------------------------------------------------------
