@@ -24,9 +24,6 @@ nb <- analytical %>%
 
 kmax <- 10
 
-nb$km2 <- kmeans(nb[, -1], 2)$cluster
-nb$km4 <- kmeans(nb[, -1], 4)$cluster
-
 # dataframe para elbow plot
 elbow <- tibble(
   k = 1:kmax,
@@ -36,9 +33,9 @@ elbow <- tibble(
 # cluster hierárquico -----------------------------------------------------
 
 nb.dist <- dist(nb[, -1])
-hc.a <- hclust(nb.dist, method = "average")
+# hc.a <- hclust(nb.dist, method = "average")
 hc.c <- hclust(nb.dist, method = "complete")
-hc.m <- hclust(nb.dist, method = "single")
+# hc.m <- hclust(nb.dist, method = "single")
 
 avg_sil_hc <- tibble(
   k = 2:kmax,
@@ -51,9 +48,6 @@ nb.fd <- data.raw %>%
   select(evangelico, where(is.numeric), -starts_with("perc")) %>%
   mutate(posicao = posicao +1) # recentrar posicao entre 0 e 2
 
-nb.fd$km2 <- kmeans(nb.fd[, -1], 2)$cluster
-nb.fd$km4 <- kmeans(nb.fd[, -1], 4)$cluster
-
 # dataframe para elbow plot
 elbow.fd <- tibble(
   k = 1:kmax,
@@ -61,7 +55,7 @@ elbow.fd <- tibble(
   )
 
 nb.dist.fd <- dist(nb.fd[, -1])
-hc.m.fd <- hclust(nb.dist.fd, method = "single")
+hc.c.fd <- hclust(nb.dist.fd, method = "complete")
 avg_sil_hc.fd <- tibble(
   k = 2:kmax,
   avg_sil = map_dbl(2:kmax, hc_sil, hc = hc.m.fd)
@@ -69,9 +63,12 @@ avg_sil_hc.fd <- tibble(
 
 # diagnosticos ------------------------------------------------------------
 
-km2_a <- analytical %>% select_if(is.numeric) %>% kmeans(centers = 2, nstart = 10)
-km2_t <- data.raw   %>% select_if(is.numeric) %>% kmeans(centers = 2, nstart = 10)
+nb$cl2 <- cutree(hc.c, k = 2)
+nb$cl3 <- cutree(hc.c, k = 3)
+
+nb.fd$cl2 <- cutree(hc.c.fd, k = 2)
+nb.fd$cl3 <- cutree(hc.c.fd, k = 3)
 
 # kmeans com 2 clusters
-CrossTable(km2_a$cluster, analytical$evangelico, mcnemar = TRUE)
-CrossTable(km2_t$cluster, data.raw$evangelico, mcnemar = TRUE)
+# CrossTable(km2_a$cluster, analytical$evangelico, mcnemar = TRUE)
+# CrossTable(km2_t$cluster, data.raw$evangelico, mcnemar = TRUE)
