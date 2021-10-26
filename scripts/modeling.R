@@ -8,6 +8,15 @@ library(dendextend)
 library(ggdendro)
 library(cluster)
 
+km_ss <- function(data, k) {
+  kmeans(data, centers = k)$tot.withinss
+}
+
+hc_sil <- function(hc, k) {
+  s <- silhouette(cutree(hc, k = k), dist = nb.dist)
+  mean(s[, 3])
+}
+
 # kmeans ------------------------------------------------------------------
 
 nb <- analytical %>%
