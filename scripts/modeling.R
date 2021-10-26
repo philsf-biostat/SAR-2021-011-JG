@@ -4,6 +4,9 @@
 # library(moderndive)
 # library(broom)
 # library(broom.mixed)
+library(dendextend)
+library(ggdendro)
+library(cluster)
 
 # kmeans ------------------------------------------------------------------
 
@@ -25,6 +28,10 @@ nb$km4 <- kmeans(nb[, -1], 4)$cluster
 elbow <- tibble(k = 1:kmax, withinss = cl)
 
 # cluster hierárquico -----------------------------------------------------
+
+hc.a <- hclust(dist(nb[, -1]), method = "average")
+hc.c <- hclust(dist(nb[, -1]), method = "complete")
+hc.m <- hclust(dist(nb[, -1]), method = "single")
 
 # sensibilidade - full dataset --------------------------------------------
 
