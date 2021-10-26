@@ -22,19 +22,16 @@ hc_sil <- function(hc, k) {
 nb <- analytical %>%
   select(evangelico, where(is.numeric))
 
-cl <- c()
-
 kmax <- 10
-
-for (i in 1:kmax) {
-  cl[i] <- kmeans(nb[, -1], centers = i)$tot.withinss
-}
 
 nb$km2 <- kmeans(nb[, -1], 2)$cluster
 nb$km4 <- kmeans(nb[, -1], 4)$cluster
 
 # dataframe para elbow plot
-elbow <- tibble(k = 1:kmax, withinss = cl)
+elbow <- tibble(
+  k = 1:kmax,
+  withinss = map_dbl(1:kmax, km_ss, data = nb[, -1])
+  )
 
 # cluster hierárquico -----------------------------------------------------
 
