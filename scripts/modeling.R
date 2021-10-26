@@ -29,9 +29,12 @@ elbow <- tibble(k = 1:kmax, withinss = cl)
 
 # cluster hierárquico -----------------------------------------------------
 
-hc.a <- hclust(dist(nb[, -1]), method = "average")
-hc.c <- hclust(dist(nb[, -1]), method = "complete")
-hc.m <- hclust(dist(nb[, -1]), method = "single")
+nb.dist <- dist(nb[, -1])
+hc.a <- hclust(nb.dist, method = "average")
+hc.c <- hclust(nb.dist, method = "complete")
+hc.m <- hclust(nb.dist, method = "single")
+
+silhouette(cutree(hc.a, k = 4), dist = nb.dist)
 
 # sensibilidade - full dataset --------------------------------------------
 
