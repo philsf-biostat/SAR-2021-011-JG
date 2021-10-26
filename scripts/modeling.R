@@ -40,7 +40,10 @@ hc.a <- hclust(nb.dist, method = "average")
 hc.c <- hclust(nb.dist, method = "complete")
 hc.m <- hclust(nb.dist, method = "single")
 
-silhouette(cutree(hc.a, k = 4), dist = nb.dist)
+avg_sil_hc <- tibble(
+  k = 2:kmax,
+  avg_sil = map_dbl(2:kmax, hc_sil, hc = hc.m)
+)
 
 # sensibilidade - full dataset --------------------------------------------
 
