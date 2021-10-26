@@ -89,3 +89,11 @@ gg.sil <- avg_sil_hc %>%
   geom_vline(xintercept = 4, lty = 2, alpha = .8, color = "red") +
   geom_line(color = ff.col) +
   geom_point(color = ff.col)
+
+gg.sil.fd <- avg_sil_hc.fd %>%
+  ggplot(aes(k, avg_sil)) +
+  geom_hline(yintercept = avg_sil_hc.fd$avg_sil, lty = 2, alpha = .2) +
+  scale_x_continuous(breaks = 1:kmax) +
+  geom_vline(xintercept = 2, lty = 2, alpha = .8, color = "red") +
+  geom_line(color = ff.col) +
+  geom_point(color = ff.col)

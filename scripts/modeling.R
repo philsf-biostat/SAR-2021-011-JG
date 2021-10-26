@@ -60,6 +60,13 @@ elbow.fd <- tibble(
   withinss = map_dbl(1:kmax, km_ss, data = nb.fd[, -1])
   )
 
+nb.dist.fd <- dist(nb.fd[, -1])
+hc.m.fd <- hclust(nb.dist.fd, method = "single")
+avg_sil_hc.fd <- tibble(
+  k = 2:kmax,
+  avg_sil = map_dbl(2:kmax, hc_sil, hc = hc.m.fd)
+)
+
 # diagnosticos ------------------------------------------------------------
 
 km2_a <- analytical %>% select_if(is.numeric) %>% kmeans(centers = 2, nstart = 10)
