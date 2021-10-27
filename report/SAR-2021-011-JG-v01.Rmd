@@ -193,23 +193,11 @@ R\$ 12075 e R\$ 2500500 entre os demais (Tabela 1 e Figura 1).
 knitr::include_graphics("../figures/receita_total.png", error = FALSE)
 ```
 
-## Determinação de clusters para k-means: elbow plot
-
-```{r fig2, fig.cap="**Figura 2** Elbow plot do método k-means."}
-# ![Age](../figures/elbow.png)
-knitr::include_graphics("../figures/elbow.png", error = FALSE)
-```
-
-
-Usando k = 3 clusters o WSS total foi `r format.float(km3$tot.withinss)` que explica `r format.pct(pct.km3)` da variância.
-
-Usando k = 2 clusters o WSS total foi `r format.float(km2$tot.withinss)` que explica `r format.pct(pct.km2)` da variância.
-
 ## Determinação de clusters para k-means: cluster hierárquico
 
 O agrupamento hierárquico
 
-```{r fig3, fig.cap="**Figura 3** Silhouette plot do cluster hierárquico."}
+```{r fig2, fig.cap="**Figura 2** Silhouette plot do cluster hierárquico."}
 # ![Age](../figures/silhouette.png)
 knitr::include_graphics("../figures/silhouette.png", error = FALSE)
 ```
@@ -223,10 +211,21 @@ Estipulando o número ótimo de clusters em k = 4, as silhuetas das observaçõe
 Este número de clusters pode ser identificado cortando o dendrograma na altura h = 2.2 (Figura 4).
 Estipulando o número de clusters em k = 2, as silhuetas das observações variam entre -0.38 e 0.67 com média 0.34 e mediana 0.38.
 
-```{r fig4, fig.cap="**Figura 4** Dendrograma do cluster hierárquico, corte na altura h = 2.2."}
+```{r fig3, fig.cap="**Figura 3** Dendrograma do cluster hierárquico, corte na altura h = 2.2."}
 # ![Age](../figures/silhouette.png)
 knitr::include_graphics("../figures/dendrograma.png", error = FALSE)
 ```
+
+## Determinação de clusters para k-means: elbow plot
+
+```{r fig4, fig.cap="**Figura 4** Elbow plot do método k-means."}
+# ![Age](../figures/elbow.png)
+knitr::include_graphics("../figures/elbow.png", error = FALSE)
+```
+
+Usando k = 3 clusters o WSS total foi `r format.float(km3$tot.withinss)` que explica `r format.pct(pct.km3)` da variância.
+
+Usando k = 2 clusters o WSS total foi `r format.float(km2$tot.withinss)` que explica `r format.pct(pct.km2)` da variância.
 
 ## Sensibilidade da análise à remoção de variáveis
 
