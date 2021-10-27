@@ -69,6 +69,18 @@ nb$cl3 <- cutree(hc.c, k = 3)
 nb.fd$cl2 <- cutree(hc.c.fd, k = 2)
 nb.fd$cl3 <- cutree(hc.c.fd, k = 3)
 
+# BSS/TSS em k=2 (obj secundário)
+km2 <- kmeans(nb[, -1], centers = 2)
+km2.fd <- kmeans(nb.fd[, -1], centers = 2)
+pct.km2 <- km2$betweenss / km2$totss
+pct.km2.fd <- km2.fd$betweenss / km2.fd$totss
+
+# BSS/TSS em k=3 (obj primário)
+km3 <- kmeans(nb[, -1], centers = 3)
+km3.fd <- kmeans(nb.fd[, -1], centers = 3)
+pct.km3 <- km3$betweenss / km3$totss
+pct.km3.fd <- km3.fd$betweenss / km3.fd$totss
+
 # kmeans com 2 clusters
 # CrossTable(km2_a$cluster, analytical$evangelico, mcnemar = TRUE)
 # CrossTable(km2_t$cluster, data.raw$evangelico, mcnemar = TRUE)
