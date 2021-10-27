@@ -43,8 +43,8 @@ avg_sil_hc <- tibble(
 # sensibilidade - full dataset --------------------------------------------
 
 nb.fd <- data.raw %>%
-  select(evangelico, where(is.numeric), -starts_with("perc")) %>%
-  mutate(posicao = posicao +1) # recentrar posicao entre 0 e 2
+  # mutate(posicao = posicao +1) %>% # recentrar posicao entre 0 e 2
+  select(evangelico, where(is.numeric), -starts_with("perc"))
 
 # dataframe para elbow plot
 elbow.fd <- tibble(
