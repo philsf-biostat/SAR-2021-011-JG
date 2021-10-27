@@ -195,7 +195,8 @@ knitr::include_graphics("../figures/receita_total.png", error = FALSE)
 
 ## Determinação de clusters para k-means: cluster hierárquico
 
-O agrupamento hierárquico
+O agrupamento hierárquico foi avaliado para números de clusters (k) entre 2 e 10, e as silhuetas médias de cada agrupamento particular foram calculadas (Figura 2).
+O número de clusters com maior silhueta média é k = 4.
 
 ```{r fig2, fig.cap="**Figura 2** Silhouette plot do cluster hierárquico."}
 # ![Age](../figures/silhouette.png)
@@ -219,7 +220,7 @@ Estipulando o número ótimo de clusters em k = 4, as silhuetas das observaçõe
 `r format.float(max(hc4_sum$si.summary))` com
 média `r format.float(hc4_sum$si.summary["Mean"])` e
 mediana `r format.float(hc4_sum$si.summary["Median"])`.
-Este número de clusters pode ser identificado cortando o dendrograma na altura h = 2.2 (Figura 3).
+Este número de clusters pode ser identificado cortando o dendrograma do agrupamento hierárquico na altura h = 2.2 (Figura 3).
 
 As silhuetas médias dos clusters indicam que o agrupamento foi bem sucedido em discriminar características dos deputados com os dados avaliados.
 O cluster 1 incluiu n = `r hc4_clus.sizes[1]` deputados e possui silhueta média `r hc4_clus.avg.widths[1]`,
