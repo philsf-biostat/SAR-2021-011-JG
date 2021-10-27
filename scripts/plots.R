@@ -71,7 +71,7 @@ gg.elbow <- elbow %>%
   # geom_hline(yintercept = elbow$withinss[3], lty = 2, alpha = .8, color = "red") +
   geom_vline(xintercept = 3, lty = 2, alpha = .8, color = "red") +
   xlab("Número de grupos") +
-  ylab("Soma de quadrados total") +
+  ylab("WSS total") +
   geom_line(color = ff.col) +
   geom_point(color = ff.col)
 
@@ -83,7 +83,7 @@ gg.elbow.fd <- elbow.fd %>%
   geom_vline(xintercept = 3, lty = 2, alpha = .8, color = "red") +
   # geom_hline(yintercept = elbow.fd$withinss[6], lty = 2, alpha = .8, color = "orange") +
   xlab("Número de grupos") +
-  ylab("Soma de quadrados total") +
+  ylab("WSS total") +
   geom_line(color = ff.col) +
   geom_point(color = ff.col)
 
