@@ -216,6 +216,13 @@ Estipulando o número de clusters em k = 2, as silhuetas das observações varia
 knitr::include_graphics("../figures/dendrograma.png", error = FALSE)
 ```
 
+```{r tab_clu}
+tab_clu %>%
+  as_kable(
+    caption = "**Tabela 2** Características dos clusters de deputados federais eleitos em 2018."
+  )
+```
+
 ## Determinação de clusters para k-means: elbow plot
 
 ```{r fig4, fig.cap="**Figura 4** Elbow plot do método k-means."}
