@@ -39,3 +39,21 @@
 #   ) %>%
 #   modify_header(estimate ~ '**d**') %>%
 #   bold_labels()
+
+tab_cl4 <- nb %>%
+  select(evangelico, total_receita, everything()) %>%
+  tbl_summary(
+    by = cl4,
+    include = -cl2
+    )
+tab_cl2 <- nb %>%
+  select(evangelico, total_receita, everything()) %>%
+  tbl_summary(
+    by = cl2,
+    include = -cl4
+  )
+
+tab_clu <- tbl_merge(list(
+  tab_cl4,
+  tab_cl2
+), tab_spanner = c("**k = 4**", "**k = 2**"))
