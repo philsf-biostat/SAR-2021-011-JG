@@ -250,7 +250,7 @@ A principal característica que difere entre esses clusters é a receita total o
 ```{r tab_cl4}
 tab_cl4 %>%
   as_kable(
-    caption = "**Tabela 2** Características dos clusters de deputados federais eleitos em 2018."
+    caption = "**Tabela 2** Características dos clusters de deputados federais eleitos em 2018, determinadas por agrupamento hierárquico com k = 4 clusters."
   )
 ```
 
@@ -267,7 +267,7 @@ A principal característica que parece discriminar estes grupos é a receita tot
 ```{r tab_cl2}
 tab_cl2 %>%
   as_kable(
-    caption = "**Tabela 3** Características dos clusters de deputados federais eleitos em 2018."
+    caption = "**Tabela 3** Características dos clusters de deputados federais eleitos em 2018, determinadas por agrupamento hierárquico com k = 2 clusters."
   )
 ```
 
