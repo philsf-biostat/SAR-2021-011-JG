@@ -68,8 +68,8 @@ gg.elbow <- elbow %>%
   ggplot(aes(k, withinss)) +
   geom_hline(yintercept = elbow$withinss, lty = 2, alpha = .2) +
   scale_x_continuous(breaks = 1:kmax) +
-  # geom_hline(yintercept = elbow$withinss[4], lty = 2, alpha = .8, color = "red") +
-  geom_vline(xintercept = 4, lty = 2, alpha = .8, color = "red") +
+  # geom_hline(yintercept = elbow$withinss[3], lty = 2, alpha = .8, color = "red") +
+  geom_vline(xintercept = 3, lty = 2, alpha = .8, color = "red") +
   geom_line(color = ff.col) +
   geom_point(color = ff.col)
 
@@ -79,14 +79,14 @@ gg.elbow.fd <- elbow.fd %>%
   scale_x_continuous(breaks = 1:kmax) +
   # geom_hline(yintercept = elbow.fd$withinss[3], lty = 2, alpha = .8, color = "red") +
   geom_vline(xintercept = 3, lty = 2, alpha = .8, color = "red") +
-  # geom_hline(yintercept = cl.fd[5], lty = 2, alpha = .8, color = "orange") +
+  # geom_hline(yintercept = elbow.fd$withinss[6], lty = 2, alpha = .8, color = "orange") +
   geom_line(color = ff.col) +
   geom_point(color = ff.col)
 
 gg.sil <- avg_sil_hc %>%
   ggplot(aes(k, avg_sil)) +
   scale_x_continuous(breaks = 1:kmax) +
-  geom_vline(xintercept = 4, lty = 2, alpha = .8, color = "red") +
+  geom_vline(xintercept = 3, lty = 2, alpha = .8, color = "red") +
   geom_line(color = ff.col) +
   geom_point(color = ff.col)
 
@@ -94,6 +94,6 @@ gg.sil.fd <- avg_sil_hc.fd %>%
   ggplot(aes(k, avg_sil)) +
   geom_hline(yintercept = avg_sil_hc.fd$avg_sil, lty = 2, alpha = .2) +
   scale_x_continuous(breaks = 1:kmax) +
-  geom_vline(xintercept = 2, lty = 2, alpha = .8, color = "red") +
+  geom_vline(xintercept = 8, lty = 2, alpha = .8, color = "red") +
   geom_line(color = ff.col) +
   geom_point(color = ff.col)
