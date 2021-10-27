@@ -53,7 +53,7 @@ tab_cl2 <- nb %>%
     include = -cl4
   )
 
-tab_clu <- tbl_merge(list(
-  tab_cl4,
-  tab_cl2
-), tab_spanner = c("**k = 4**", "**k = 2**"))
+# tab_clu <- tbl_merge(list(
+#   tab_cl4,
+#   tab_cl2
+# ), tab_spanner = c("**k = 4**", "**k = 2**"))
