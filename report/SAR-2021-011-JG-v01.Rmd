@@ -190,7 +190,7 @@ knitr::include_graphics("../figures/elbow.png", error = FALSE)
 knitr::include_graphics("../figures/silhouette.png", error = FALSE)
 ```
 
-```{r fig4, fig.cap="**Figura 4** Dendrograma do cluster hierárquico, corte na altura h = 2.6."}
+```{r fig4, fig.cap="**Figura 4** Dendrograma do cluster hierárquico, corte na altura h = 2.2."}
 # ![Age](../figures/silhouette.png)
 knitr::include_graphics("../figures/arvore.png", error = FALSE)
 ```

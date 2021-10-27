@@ -93,7 +93,7 @@ gg.sil <- avg_sil_hc %>%
   ggplot(aes(k, avg_sil)) +
   geom_hline(yintercept = avg_sil_hc$avg_sil, lty = 2, alpha = .1) +
   scale_x_continuous(breaks = 1:kmax) +
-  geom_vline(xintercept = 3, lty = 2, alpha = .8, color = "red") +
+  geom_vline(xintercept = 4, lty = 2, alpha = .8, color = "red") +
   xlab("Número de grupos") +
   ylab("Largura média da silhueta") +
   geom_line(color = ff.col) +
@@ -117,13 +117,13 @@ gg.sil.fd <- avg_sil_hc.fd %>%
 
 gg.dendro <- hc.c %>%
   as.dendrogram() %>%
-  color_branches(h = 2.6) %>%
+  color_branches(h = 2.2) %>%
   as.ggdend() %>%
   ggplot(labels = FALSE) +
   theme_dendro() +
   theme(axis.text.x = element_text(angle = 0, hjust = 1, vjust = 0.5)) +
   theme(axis.text.y = element_text(angle = 0, hjust = 1)) +
-  geom_hline(yintercept = c(2.6), col = "red", lty = 2)
+  geom_hline(yintercept = c(2.2), col = "red", lty = 2)
 
 gg.dendro.fd.a <- hc.c.fd %>%
   as.dendrogram() %>%

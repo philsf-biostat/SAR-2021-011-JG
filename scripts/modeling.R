@@ -62,10 +62,10 @@ avg_sil_hc.fd <- tibble(
 # diagnosticos ------------------------------------------------------------
 
 nb$cl2 <- cutree(hc.c, k = 2)
-nb$cl3 <- cutree(hc.c, k = 3)
+nb$cl4 <- cutree(hc.c, k = 4)
 
 nb.fd$cl2 <- cutree(hc.c.fd, k = 2)
-nb.fd$cl3 <- cutree(hc.c.fd, k = 3)
+nb.fd$cl4 <- cutree(hc.c.fd, k = 4)
 
 # BSS/TSS em k=2 (obj secundário)
 km2 <- kmeans(nb[, -1], centers = 2)
