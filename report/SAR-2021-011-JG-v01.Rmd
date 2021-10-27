@@ -337,9 +337,10 @@ knitr::include_graphics("../figures/dendrograma_full.png", error = FALSE)
 
 # Observações e limitações
 
+- ajuste de escala: contraponto entre estabilidade numérica vs interpretabilidade
 - sensibilidade: (clusters mt pq)
   É possível que esses clusters tenham identificado os casos de deputados com características anômalas em relação aos demais (*outliers*).
--
+- recomendações outliers: remover (e redefinir a população), ou tentar isolar aumentando k
 
 # Conclusões
 
