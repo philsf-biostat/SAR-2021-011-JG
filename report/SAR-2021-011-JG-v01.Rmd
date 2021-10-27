@@ -289,12 +289,10 @@ Com o número ótimo de clusters (k = 3) o WSS total foi `r format.float(km3.fd$
 
 Usando k = 2 clusters o WSS total foi `r format.float(km2.fd$tot.withinss)` que explica `r format.pct(pct.km2.fd)` da variância.
 
-
 ```{r fig5, fig.cap="**Figura 5** Elbow plot do método k-means com o dataset completo."}
 # ![Age](../figures/elbow.png)
 knitr::include_graphics("../figures/elbow_full.png", error = FALSE)
 ```
-
 
 O método de agrupamento hierárquico se mostrou sensível à exclusão das variáveis acessórias.
 Com o dataset completo o número ótimo de clusters é k=8 onde 
@@ -342,13 +340,6 @@ Este número de clusters possibilita identificar dois grupos de evangélicos e d
 
 # ![Age](../figures/receitas.png)
 knitr::include_graphics("../figures/receitas.png", error = FALSE)
-```
-
-```{r A2, fig.cap="**Figura A2** Elbow plot do método k-means, com o full dataset."}
-
-# ![elbow full](../figures/elbow_full.png)
-knitr::include_graphics("../figures/elbow_full.png", error = FALSE)
-
 ```
 
 ## Disponibilidade
