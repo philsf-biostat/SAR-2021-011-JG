@@ -246,6 +246,18 @@ O cluster 3 (azul na Figura 3) parece identificar a maioria dos deputados com po
 É possível identificar um cluster pequeno (n=2) que agrupou dois deputados com mais de 1 milhão de votos (cluster 4 na Tabela 2, verde escuro na Figura 3).
 Ambos são evangélicos.
 
+## Determinação de clusters para k-means: elbow plot
+
+O método k-means foi utilizado de forma exploratória para determinação do número ótimo de clusters conforme mensurado pela queda do WSS.
+Foram avaliados os possíveis números de clusters (k) de 1 a 10.
+O número ótimo de clusters obtido foi k = 3, onde houve a queda de WSS mais expressiva (Figura 4).
+Usando k = 3 clusters o WSS total foi `r format.float(km3$tot.withinss)` que explica `r format.pct(pct.km3)` da variância entre os grupos.
+
+```{r fig4, fig.cap="**Figura 4** Elbow plot do método k-means."}
+# ![Age](../figures/elbow.png)
+knitr::include_graphics("../figures/elbow.png", error = FALSE)
+```
+
 ## Avaliação de k=2 clusters
 
 Os métodos descritos nas seções anteriores foram aplicados ao caso particular de se buscar exatamente 2 agrupamentos que discriminassem os deputados evangélicos dos demais.
@@ -281,18 +293,6 @@ tab_cl2 %>%
 
 A qualidade do agrupamento por k-means também foi avaliada para este caso particular.
 Usando k = 2 clusters o WSS total foi `r format.float(km2$tot.withinss)` que explica `r format.pct(pct.km2)` da variância entre os grupos.
-
-## Determinação de clusters para k-means: elbow plot
-
-O método k-means foi utilizado de forma exploratória para determinação do número ótimo de clusters conforme mensurado pela queda do WSS.
-Foram avaliados os possíveis números de clusters (k) de 1 a 10.
-O número ótimo de clusters obtido foi k = 3, onde houve a queda de WSS mais expressiva (Figura 4).
-Usando k = 3 clusters o WSS total foi `r format.float(km3$tot.withinss)` que explica `r format.pct(pct.km3)` da variância entre os grupos.
-
-```{r fig4, fig.cap="**Figura 4** Elbow plot do método k-means."}
-# ![Age](../figures/elbow.png)
-knitr::include_graphics("../figures/elbow.png", error = FALSE)
-```
 
 ## Sensibilidade da análise à remoção de variáveis
 
