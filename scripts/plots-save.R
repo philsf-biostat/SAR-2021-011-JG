@@ -16,4 +16,6 @@ units <- "cm"
 ggsave(filename = "figures/receitas.png", plot = gg.receitas, height = 16.5, width = 16.5, units = units)
 ggsave(filename = "figures/receita_total.png", plot = gg.rec_total, height = height, width = width, units = units)
 ggsave(filename = "figures/elbow.png", plot = gg.elbow, height = height, width = width, units = units)
+ggsave(filename = "figures/silhouette.png", plot = gg.sil, height = height, width = width, units = units)
 ggsave(filename = "figures/elbow_full.png", plot = gg.elbow.fd, height = height, width = width, units = units)
+ggsave(filename = "figures/silhouette_full.png", plot = gg.sil.fd, height = height, width = width, units = units)
