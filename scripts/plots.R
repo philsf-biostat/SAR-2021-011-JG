@@ -106,3 +106,8 @@ gg.sil.fd <- avg_sil_hc.fd %>%
   ylab("Largura média da silhueta") +
   geom_line(color = ff.col) +
   geom_point(color = ff.col)
+
+# ggdendrogram(hc.a, labels = FALSE) + geom_hline(yintercept = c(1.1, 1.6), col = "red")
+# ggdendrogram(hc.m, labels = FALSE) + geom_hline(yintercept = c(0.8), col = "red")
+ggdendrogram(hc.c, labels = FALSE) + geom_hline(yintercept = c(2.4), col = "red")
+ggdendrogram(hc.c.fd, labels = FALSE) + geom_hline(yintercept = c(2.75, 3.85), col = c("red", ff.col))

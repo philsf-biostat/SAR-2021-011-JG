@@ -4,7 +4,7 @@
 # library(moderndive)
 # library(broom)
 # library(broom.mixed)
-library(dendextend)
+# library(dendextend)
 library(ggdendro)
 library(cluster)
 
