@@ -133,7 +133,7 @@ gg.dendro.fd.a <- hc.c.fd %>%
   theme_dendro() +
   theme(axis.text.x = element_text(angle = 0, hjust = 1, vjust = 0.5)) +
   theme(axis.text.y = element_text(angle = 0, hjust = 1)) +
-  geom_hline(yintercept = c(3.85), col = "red", lty = 2)
+  geom_hline(yintercept = c(3.85), col = "red", lty = 2, lwd = 1)
 
 gg.dendro.fd.b <- hc.c.fd %>%
   as.dendrogram() %>%
@@ -144,7 +144,7 @@ gg.dendro.fd.b <- hc.c.fd %>%
   theme_dendro() +
   theme(axis.text.x = element_text(angle = 0, hjust = 1, vjust = 0.5)) +
   theme(axis.text.y = element_text(angle = 0, hjust = 1)) +
-  geom_hline(yintercept = c(2.75), col = "blue", lty = 2)
+  geom_hline(yintercept = c(2.75), col = "blue", lty = 2, lwd = 1)
 
 # juntar os dois dendrogramas em um painel
 gg.dendro.fd <- gridExtra::arrangeGrob(gg.dendro.fd.a, gg.dendro.fd.b, ncol = 1)
