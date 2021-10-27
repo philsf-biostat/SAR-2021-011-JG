@@ -203,16 +203,11 @@ O número de clusters com maior silhueta média é k = 4.
 knitr::include_graphics("../figures/silhouette.png", error = FALSE)
 ```
 
-```{r silhuetas, include=FALSE}
+```{r silhuetas4, include=FALSE}
 hc4_sum <- summary(hc4_sil)
 hc4_avg.width <- format.float(hc4_sum$avg.width)
 hc4_clus.sizes <- hc4_sum$clus.sizes
 hc4_clus.avg.widths <- format.float(hc4_sum$clus.avg.widths)
-
-hc2_sum <- summary(hc2_sil)
-hc2_avg.width <- format.float(hc2_sum$avg.width)
-hc2_clus.sizes <- hc2_sum$clus.sizes
-hc2_clus.avg.widths <- format.float(hc2_sum$clus.avg.widths)
 ```
 
 Estipulando o número ótimo de clusters em k = 4, as silhuetas das observações variam entre
@@ -228,14 +223,6 @@ O cluster 1 incluiu n = `r hc4_clus.sizes[1]` deputados e possui silhueta média
 o cluster 2 incluiu n = `r hc4_clus.sizes[2]` deputados e possui silhueta média `r hc4_clus.avg.widths[2]`,
 o cluster 3 incluiu n = `r hc4_clus.sizes[3]` deputados e possui silhueta média `r hc4_clus.avg.widths[3]` e
 o cluster 4 incluiu n = `r hc4_clus.sizes[4]` deputados e possui silhueta média `r hc4_clus.avg.widths[4]`.
-
-Estipulando o número de clusters em k = 2, as silhuetas das observações variam entre
-`r format.float(min(hc2_sum$si.summary))` e
-`r format.float(max(hc2_sum$si.summary))` com
-média `r format.float(hc2_sum$si.summary["Mean"])` e
-mediana `r format.float(hc2_sum$si.summary["Median"])`.
-O cluster 1 incluiu n = `r hc2_clus.sizes[1]` deputados e possui silhueta média `r hc2_clus.avg.widths[1]` e
-o cluster 2 incluiu n = `r hc2_clus.sizes[2]` deputados e possui silhueta média `r hc2_clus.avg.widths[2]`.
 
 ```{r fig3, fig.cap="**Figura 3** Dendrograma do cluster hierárquico, corte na altura h = 2.2."}
 # ![Age](../figures/silhouette.png)
@@ -261,6 +248,25 @@ Ambos são evangélicos.
 
 ## Avaliação de k=2 clusters
 
+Os métodos descritos nas seções anteriores foram aplicados ao caso particular de se buscar exatamente 2 agrupamentos que discriminassem os deputados evangélicos dos demais.
+
+**Clusterização hierárquica**
+
+```{r silhuetas2, include=FALSE}
+hc2_sum <- summary(hc2_sil)
+hc2_avg.width <- format.float(hc2_sum$avg.width)
+hc2_clus.sizes <- hc2_sum$clus.sizes
+hc2_clus.avg.widths <- format.float(hc2_sum$clus.avg.widths)
+```
+
+Estipulando o número de clusters em k = 2 no agrupamento hierárquico, as silhuetas das observações variam entre
+`r format.float(min(hc2_sum$si.summary))` e
+`r format.float(max(hc2_sum$si.summary))` com
+média `r format.float(hc2_sum$si.summary["Mean"])` e
+mediana `r format.float(hc2_sum$si.summary["Median"])`.
+O cluster 1 incluiu n = `r hc2_clus.sizes[1]` deputados e possui silhueta média `r hc2_clus.avg.widths[1]` e
+o cluster 2 incluiu n = `r hc2_clus.sizes[2]` deputados e possui silhueta média `r hc2_clus.avg.widths[2]`.
+
 A tentativa de agrupar os deputados em k = 2 clusters não identificou um grupo com maioria de evangélicos, com ambos os clusters incluindo cerca de 20% de deputados evangélicos (Tabela 3) com os dados incluídos na análise.
 A principal característica que parece discriminar estes grupos é a receita total recebida, onde o cluster 1 obteve em média R\$ 760 mil, enquanto o cluster 2 obteve próximo de R\$ 2 milhões.
 
@@ -270,6 +276,11 @@ tab_cl2 %>%
     caption = "**Tabela 3** Características dos clusters de deputados federais eleitos em 2018, determinadas por agrupamento hierárquico com k = 2 clusters."
   )
 ```
+
+**Método k-means**
+
+A qualidade do agrupamento por k-means também foi avaliada para este caso particular.
+Usando k = 2 clusters o WSS total foi `r format.float(km2$tot.withinss)` que explica `r format.pct(pct.km2)` da variância.
 
 ## Determinação de clusters para k-means: elbow plot
 
@@ -282,8 +293,6 @@ Usando k = 3 clusters o WSS total foi `r format.float(km3$tot.withinss)` que exp
 # ![Age](../figures/elbow.png)
 knitr::include_graphics("../figures/elbow.png", error = FALSE)
 ```
-
-Usando k = 2 clusters o WSS total foi `r format.float(km2$tot.withinss)` que explica `r format.pct(pct.km2)` da variância.
 
 ## Sensibilidade da análise à remoção de variáveis
 
