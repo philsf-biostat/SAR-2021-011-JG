@@ -299,7 +299,7 @@ Usando k = 2 clusters o WSS total foi `r format.float(km2$tot.withinss)` que exp
 
 ## Sensibilidade da análise à exclusão de variáveis
 
-O método elbow plot para determinação do número de clusters do k-means não demonstrou sensibilidade à exclusão das variáveis, tendo resultado no mesmo número k=3 de clusters da análise principal (Figura 5).
+O método elbow plot para determinação do número de clusters do k-means não demonstrou sensibilidade à exclusão das variáveis de origens individuais de receita e número de filiados, tendo resultado no mesmo número k=3 de clusters da análise principal (Figura 5).
 Com o número ótimo de clusters (k = 3) o WSS total foi `r format.float(km3.fd$tot.withinss)` que explica `r format.pct(pct.km3.fd)` da variância.
 
 Usando k = 2 clusters o WSS total foi `r format.float(km2.fd$tot.withinss)` que explica `r format.pct(pct.km2.fd)` da variância.
@@ -309,7 +309,7 @@ Usando k = 2 clusters o WSS total foi `r format.float(km2.fd$tot.withinss)` que 
 knitr::include_graphics("../figures/elbow_full.png", error = FALSE)
 ```
 
-O método de agrupamento hierárquico se mostrou sensível à exclusão das variáveis acessórias.
+O método de agrupamento hierárquico se mostrou sensível à exclusão destas variáveis.
 Com o dataset completo o número ótimo de clusters é k=8 onde 
 a maior silhueta média foi `r format.float(hc_sil(hc.c.fd, 8, nb.dist.fd))` (figura 6).
 Esta silhueta média é substancialmente menor que o resultado obtido na análise principal, indicando uma menor coesão dos grupos gerados e portanto uma menor qualidade dos agrupamentos.
