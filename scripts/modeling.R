@@ -4,8 +4,6 @@
 # library(moderndive)
 # library(broom)
 # library(broom.mixed)
-# library(dendextend)
-library(ggdendro)
 library(cluster)
 
 km_ss <- function(data, k) {

@@ -1,6 +1,8 @@
 # setup -------------------------------------------------------------------
 # library(ggplot2)
 # library(survminer)
+library(dendextend)
+library(ggdendro)
 
 ff.col <- "steelblue" # good for single groups scale fill/color brewer
 ff.pal <- "Paired"    # good for binary groups scale fill/color brewer
@@ -107,8 +109,42 @@ gg.sil.fd <- avg_sil_hc.fd %>%
   geom_line(color = ff.col) +
   geom_point(color = ff.col)
 
-gg.dendro <- ggdendrogram(hc.c, labels = FALSE) +
-  geom_hline(yintercept = c(2.4), col = "red")
+# gg.dendro <- ggdendrogram(hc.c, labels = FALSE) +
+#   geom_hline(yintercept = c(2.6), col = "red")
 
-gg.dendro.fd <- ggdendrogram(hc.c.fd, labels = FALSE) +
-  geom_hline(yintercept = c(2.75, 3.85), col = c("red", ff.col))
+# gg.dendro.fd <- ggdendrogram(hc.c.fd, labels = FALSE) +
+#   geom_hline(yintercept = c(2.75, 3.85), col = c("red", ff.col))
+
+gg.dendro <- hc.c %>%
+  as.dendrogram() %>%
+  color_branches(h = 2.6) %>%
+  as.ggdend() %>%
+  ggplot(labels = FALSE) +
+  theme_dendro() +
+  theme(axis.text.x = element_text(angle = 0, hjust = 1, vjust = 0.5)) +
+  theme(axis.text.y = element_text(angle = 0, hjust = 1)) +
+  geom_hline(yintercept = c(2.6), col = "red", lty = 2)
+
+gg.dendro.fd.a <- hc.c.fd %>%
+  as.dendrogram() %>%
+  color_branches(h = 3.85) %>%
+  as.ggdend() %>%
+  ggplot(labels = FALSE) +
+  theme_dendro() +
+  theme(axis.text.x = element_text(angle = 0, hjust = 1, vjust = 0.5)) +
+  theme(axis.text.y = element_text(angle = 0, hjust = 1)) +
+  geom_hline(yintercept = c(3.85), col = "red", lty = 2)
+
+gg.dendro.fd.b <- hc.c.fd %>%
+  as.dendrogram() %>%
+  color_branches(h = 2.75) %>%
+  as.ggdend() %>%
+  ggplot(labels = FALSE) +
+  # theme(axis = element_blank()) +
+  theme_dendro() +
+  theme(axis.text.x = element_text(angle = 0, hjust = 1, vjust = 0.5)) +
+  theme(axis.text.y = element_text(angle = 0, hjust = 1)) +
+  geom_hline(yintercept = c(2.75), col = "blue", lty = 2)
+
+# juntar os dois dendrogramas em um painel
+gg.dendro.fd <- gridExtra::grid.arrange(gg.dendro.fd.a, gg.dendro.fd.b, ncol = 1)
