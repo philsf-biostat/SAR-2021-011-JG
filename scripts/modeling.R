@@ -67,6 +67,9 @@ nb$cl4 <- cutree(hc.c, k = 4)
 nb.fd$cl2 <- cutree(hc.c.fd, k = 2)
 nb.fd$cl4 <- cutree(hc.c.fd, k = 4)
 
+hc2_sil <- silhouette(cutree(hc.c, 2), nb.dist)
+hc4_sil <- silhouette(cutree(hc.c, 4), nb.dist)
+
 # BSS/TSS em k=2 (obj secundário)
 km2 <- kmeans(nb[, -1], centers = 2, nstart = 10)
 km2.fd <- kmeans(nb.fd[, -1], centers = 2, nstart = 10)
