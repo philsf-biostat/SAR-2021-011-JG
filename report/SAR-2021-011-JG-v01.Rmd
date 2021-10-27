@@ -208,18 +208,18 @@ hc2_sil[, 3] %>% summary %>% round(digits = 2)
 ```
 
 Estipulando o número ótimo de clusters em k = 4, as silhuetas das observações variam entre -0.28 e 0.66 com média 0.37 e mediana 0.40.
-Este número de clusters pode ser identificado cortando o dendrograma na altura h = 2.2 (Figura 4).
+Este número de clusters pode ser identificado cortando o dendrograma na altura h = 2.2 (Figura 3).
 Estipulando o número de clusters em k = 2, as silhuetas das observações variam entre -0.38 e 0.67 com média 0.34 e mediana 0.38.
-
-```{r fig3, fig.cap="**Figura 3** Dendrograma do cluster hierárquico, corte na altura h = 2.2."}
-# ![Age](../figures/silhouette.png)
-knitr::include_graphics("../figures/dendrograma.png", error = FALSE)
-```
 
 <!-- A tabela 2 mostra as características dos 4 clusters. -->
 Os quatro clusters criados não foram suficientes para segregar os deputados evangélicos dos não evangélicos, mas em sua maioria ficaram distribuídos em dois grupos (clusters 1 e 2 na Tabela 2).
 O cluster 1 tem 226 deputados (verde na figura 3) e em sua composição 30% dos deputados incluídos são evangélicos, enquanto o cluster 2 tem 153 deputados dos quais 24% são evangélicos (vermelho na figura 3).
 A principal característica que difere entre esses clusters é a receita total onde o cluster 1 obteve em torno de R\$ 700 milhões e o cluster dois obteve quase R\$ 2 milhões.
+
+```{r fig3, fig.cap="**Figura 3** Dendrograma do cluster hierárquico, corte na altura h = 2.2."}
+# ![Age](../figures/silhouette.png)
+knitr::include_graphics("../figures/dendrograma.png", error = FALSE)
+```
 
 O cluster 3 (azul na Figura 3) parece identificar a maioria dos deputados com posicionamento mais à esquerda (Índice de Power e Silveira-Rodrigues negativo), e possui baixa representatividade de deputados evangélicos (n=10, 8% do grupo).
 
