@@ -51,9 +51,10 @@ kable(history)
 
 # Lista de abreviaturas
 
-- BSS:
-- TSS:
-- WSS:
+- BSS: soma dos quadrados inter grupos (*between sum of squares*)
+- DP: desvio padrão
+- TSS: soma dos quadrados total (*total sum of squares*)
+- WSS: soma dos quadrados intra grupos (*within sum of squares*)
 
 # Introdução
 
