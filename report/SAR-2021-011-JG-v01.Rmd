@@ -293,10 +293,22 @@ Usando k = 3 clusters o WSS total foi `r format.float(km3.fd$tot.withinss)` que 
 
 Usando k = 2 clusters o WSS total foi `r format.float(km2.fd$tot.withinss)` que explica `r format.pct(pct.km2.fd)` da variância.
 
+O método de agrupamento hierárquico se mostrou sensível à exclusão das variáveis acessórias.
+Com o dataset completo o número ótimo de clusters é k=8 onde 
+a maior silhueta média foi `r format.float(hc_sil(hc.c.fd, 8, nb.dist.fd))` (figura 6).
+Esta silhueta média é substancialmente menor que o resultado obtido na análise principal, indicando uma menor coesão dos grupos gerados e portanto uma menor qualidade dos agrupamentos.
+Ao comparar o mesmo número de clusters da análise principal (k=4) observa-se
+silhueta média foi `r format.float(hc_sil(hc.c.fd, 4, nb.dist.fd))`.
+
 ```{r fig6, fig.cap="**Figura 6** Silhouette plot do cluster hierárquico com o dataset completo."}
 # ![Age](../figures/silhouette.png)
 knitr::include_graphics("../figures/silhouette_full.png", error = FALSE)
 ```
+
+Os dois agrupamentos acima podem ser observados na figura 7, com seus respectivos cortes nas alturas do dendrograma.
+Observa-se em ambos os casos que a maior parte dos deputados encontram-se nos primeiros clusters.
+No caso k=4 (Figura 7A) os deputados são majoritariamente agrupados nos 3 primeiros clusters, e o último cluster possui 6 deputados.
+No caso k=8 (Figura 7B) apenas 10 deputados foram alocados nos últimos 4.
 
 ```{r fig7, fig.cap="**Figura 7** Dendrograma do cluster hierárquico com o dataset completo, cortes nas alturas h = 3.85 (vermelho) e h = 2.75 (azul)."}
 # ![Age](../figures/silhouette.png)
@@ -304,6 +316,10 @@ knitr::include_graphics("../figures/dendrograma_full.png", error = FALSE)
 ```
 
 # Observações e limitações
+
+- sensibilidade: (clusters mt pq)
+  É possível que esses clusters tenham identificado os casos de deputados com características anômalas em relação aos demais (*outliers*).
+-
 
 # Conclusões
 

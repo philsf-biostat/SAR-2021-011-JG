@@ -143,6 +143,7 @@ gg.dendro.fd.a <- hc.c.fd %>%
   theme(axis.line.x = element_blank()) +
   theme(axis.ticks.x = element_blank()) +
   ylab("Altura (h)") +
+  ggtitle("A") +
   geom_hline(yintercept = c(3.85), col = "red", lty = 2, lwd = 1)
 
 gg.dendro.fd.b <- hc.c.fd %>%
@@ -158,6 +159,7 @@ gg.dendro.fd.b <- hc.c.fd %>%
   theme(axis.line.x = element_blank()) +
   theme(axis.ticks.x = element_blank()) +
   ylab("Altura (h)") +
+  ggtitle("B") +
   geom_hline(yintercept = c(2.75), col = "blue", lty = 2, lwd = 1)
 
 # juntar os dois dendrogramas em um painel
