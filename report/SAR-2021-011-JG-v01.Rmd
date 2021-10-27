@@ -205,24 +205,25 @@ knitr::include_graphics("../figures/silhouette.png", error = FALSE)
 ```{r silhuetas, include=FALSE}
 hc4_sum <- summary(hc4_sil)
 hc4_avg.width <- format.float(hc4_sum$avg.width)
-hc4_clus.sizes <- format.float(hc4_sum$clus.sizes)
+hc4_clus.sizes <- hc4_sum$clus.sizes
 hc4_clus.avg.widths <- format.float(hc4_sum$clus.avg.widths)
 
 hc2_sum <- summary(hc2_sil)
 hc2_avg.width <- format.float(hc2_sum$avg.width)
-hc2_clus.sizes <- format.float(hc2_sum$clus.sizes)
+hc2_clus.sizes <- hc2_sum$clus.sizes
 hc2_clus.avg.widths <- format.float(hc2_sum$clus.avg.widths)
 ```
 
 Estipulando o número ótimo de clusters em k = 4, as silhuetas das observações variam entre `r format.float(min(hc4_sum$si.summary))` e `r format.float(max(hc4_sum$si.summary))` com média `r format.float(hc4_sum$si.summary["Mean"])` e mediana `r format.float(hc4_sum$si.summary["Median"])`.
 Este número de clusters pode ser identificado cortando o dendrograma na altura h = 2.2 (Figura 3).
-Estipulando o número de clusters em k = 2, as silhuetas das observações variam entre -0.38 e 0.67 com média 0.34 e mediana 0.38.
 
 As silhuetas médias dos clusters indicam que o agrupamento foi bem sucedido em discriminar características dos deputados com os dados avaliados.
-O cluster 1 incluiu n = 226 deputados e possui silhueta média 0.28,
-o cluster 2 incluiu n = 153 deputados e possui silhueta média 0.50,
-o cluster 3 incluiu n = 132 deputados e possui silhueta média 0.36 e
-o cluster 4 incluiu n == 2 deputados e possui silhueta média 0.50.
+O cluster 1 incluiu n = `r hc4_clus.sizes[1]` deputados e possui silhueta média `r hc4_clus.avg.widths[1]`,
+o cluster 2 incluiu n = `r hc4_clus.sizes[2]` deputados e possui silhueta média `r hc4_clus.avg.widths[2]`,
+o cluster 3 incluiu n = `r hc4_clus.sizes[3]` deputados e possui silhueta média `r hc4_clus.avg.widths[3]` e
+o cluster 4 incluiu n == `r hc4_clus.sizes[4]` deputados e possui silhueta média `r hc4_clus.avg.widths[4]`.
+
+Estipulando o número de clusters em k = 2, as silhuetas das observações variam entre `r format.float(min(hc2_sum$si.summary))` e `r format.float(max(hc2_sum$si.summary))` com média `r format.float(hc2_sum$si.summary["Mean"])` e mediana `r format.float(hc2_sum$si.summary["Median"])`.
 
 <!-- A tabela 2 mostra as características dos 4 clusters. -->
 Os quatro clusters criados não foram suficientes para segregar os deputados evangélicos dos não evangélicos, mas em sua maioria ficaram distribuídos em dois grupos (clusters 1 e 2 na Tabela 2).
