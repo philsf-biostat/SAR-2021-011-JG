@@ -201,7 +201,7 @@ knitr::include_graphics("../figures/receita_total.png", error = FALSE)
 O agrupamento hierárquico foi avaliado para números de clusters (k) entre 2 e 10, e as silhuetas médias de cada agrupamento particular foram calculadas (Figura 2).
 O número de clusters com maior silhueta média é k = 4.
 
-```{r fig2, fig.cap="**Figura 2** Silhouette plot do cluster hierárquico."}
+```{r fig2, fig.cap="**Figura 2** Variação da silhueta média do cluster hierárquico para diferentes valores de k."}
 # ![Age](../figures/silhouette.png)
 knitr::include_graphics("../figures/silhouette.png", error = FALSE)
 ```
@@ -316,7 +316,7 @@ Esta silhueta média é substancialmente menor que o resultado obtido na anális
 Ao comparar o mesmo número de clusters da análise principal (k=4) observa-se
 silhueta média foi `r format.float(hc_sil(hc.c.fd, 4, nb.dist.fd))`.
 
-```{r fig6, fig.cap="**Figura 6** Silhouette plot do cluster hierárquico com o dataset completo."}
+```{r fig6, fig.cap="**Figura 6** Variação da silhueta média do cluster hierárquico para diferentes valores de k, com o dataset completo."}
 # ![Age](../figures/silhouette.png)
 knitr::include_graphics("../figures/silhouette_full.png", error = FALSE)
 ```
