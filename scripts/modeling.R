@@ -68,14 +68,14 @@ nb.fd$cl2 <- cutree(hc.c.fd, k = 2)
 nb.fd$cl4 <- cutree(hc.c.fd, k = 4)
 
 # BSS/TSS em k=2 (obj secundário)
-km2 <- kmeans(nb[, -1], centers = 2)
-km2.fd <- kmeans(nb.fd[, -1], centers = 2)
+km2 <- kmeans(nb[, -1], centers = 2, nstart = 10)
+km2.fd <- kmeans(nb.fd[, -1], centers = 2, nstart = 10)
 pct.km2 <- km2$betweenss / km2$totss
 pct.km2.fd <- km2.fd$betweenss / km2.fd$totss
 
 # BSS/TSS em k=3 (obj primário)
-km3 <- kmeans(nb[, -1], centers = 3)
-km3.fd <- kmeans(nb.fd[, -1], centers = 3)
+km3 <- kmeans(nb[, -1], centers = 3, nstart = 10)
+km3.fd <- kmeans(nb.fd[, -1], centers = 3, nstart = 10)
 pct.km3 <- km3$betweenss / km3$totss
 pct.km3.fd <- km3.fd$betweenss / km3.fd$totss
 
