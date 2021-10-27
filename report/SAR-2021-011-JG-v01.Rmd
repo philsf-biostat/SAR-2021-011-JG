@@ -273,12 +273,15 @@ tab_cl2 %>%
 
 ## Determinação de clusters para k-means: elbow plot
 
+O método k-means foi utilizado de forma exploratória para determinação do número ótimo de clusters conforme mensurado pela queda do WSS.
+Foram avaliados os possíveis números de clusters (k) de 1 a 10.
+O número ótimo de clusters obtido foi k = 3, onde houve a queda de WSS mais expressiva (Figura 4).
+Usando k = 3 clusters o WSS total foi `r format.float(km3$tot.withinss)` que explica `r format.pct(pct.km3)` da variância.
+
 ```{r fig4, fig.cap="**Figura 4** Elbow plot do método k-means."}
 # ![Age](../figures/elbow.png)
 knitr::include_graphics("../figures/elbow.png", error = FALSE)
 ```
-
-Usando k = 3 clusters o WSS total foi `r format.float(km3$tot.withinss)` que explica `r format.pct(pct.km3)` da variância.
 
 Usando k = 2 clusters o WSS total foi `r format.float(km2$tot.withinss)` que explica `r format.pct(pct.km2)` da variância.
 
