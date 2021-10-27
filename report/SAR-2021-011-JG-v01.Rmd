@@ -220,7 +220,8 @@ Estipulando o número ótimo de clusters em k = 4, as silhuetas das observaçõe
 `r format.float(max(hc4_sum$si.summary))` com
 média `r format.float(hc4_sum$si.summary["Mean"])` e
 mediana `r format.float(hc4_sum$si.summary["Median"])`.
-Este número de clusters pode ser identificado cortando o dendrograma do agrupamento hierárquico na altura h = 2.2 (Figura 3).
+Este agrupamento em particular pode ser identificado cortando-se o dendrograma do agrupamento hierárquico na altura h = 2.2 (Figura 3).
+Isto significa que a maior distância entre dois clusters não supera h = 2.2.
 
 As silhuetas médias dos clusters indicam que o agrupamento foi bem sucedido em discriminar características dos deputados com os dados avaliados.
 O cluster 1 incluiu n = `r hc4_clus.sizes[1]` deputados e possui silhueta média `r hc4_clus.avg.widths[1]`,
@@ -236,20 +237,15 @@ mediana `r format.float(hc2_sum$si.summary["Median"])`.
 O cluster 1 incluiu n = `r hc2_clus.sizes[1]` deputados e possui silhueta média `r hc2_clus.avg.widths[1]` e
 o cluster 2 incluiu n = `r hc2_clus.sizes[2]` deputados e possui silhueta média `r hc2_clus.avg.widths[2]`.
 
-<!-- A tabela 2 mostra as características dos 4 clusters. -->
-Os quatro clusters criados não foram suficientes para segregar os deputados evangélicos dos não evangélicos, mas em sua maioria ficaram distribuídos em dois grupos (clusters 1 e 2 na Tabela 2).
-O cluster 1 tem 226 deputados (verde na figura 3) e em sua composição 30% dos deputados incluídos são evangélicos, enquanto o cluster 2 tem 153 deputados dos quais 24% são evangélicos (vermelho na figura 3).
-A principal característica que difere entre esses clusters é a receita total onde o cluster 1 obteve em torno de R\$ 700 milhões e o cluster dois obteve quase R\$ 2 milhões.
-
 ```{r fig3, fig.cap="**Figura 3** Dendrograma do cluster hierárquico, corte na altura h = 2.2."}
 # ![Age](../figures/silhouette.png)
 knitr::include_graphics("../figures/dendrograma.png", error = FALSE)
 ```
 
-O cluster 3 (azul na Figura 3) parece identificar a maioria dos deputados com posicionamento mais à esquerda (Índice de Power e Silveira-Rodrigues negativo), e possui baixa representatividade de deputados evangélicos (n=10, 8% do grupo).
-
-É possível identificar um cluster pequeno (n=2) que agrupou dois deputados com mais de 1 milhão de votos (cluster 4 na Tabela 2, verde escuro na Figura 3).
-Ambos são evangélicos.
+<!-- A tabela 2 mostra as características dos 4 clusters. -->
+Os quatro clusters obtidos não foram suficientes para discriminar os deputados evangélicos do restante, mas a maioria destes ficou distribuída em dois dos grupos (clusters 1 e 2 na Tabela 2).
+O cluster 1 tem 226 deputados (verde na figura 3) e em sua composição 30% dos deputados incluídos são evangélicos, enquanto o cluster 2 tem 153 deputados dos quais 24% são evangélicos (vermelho na figura 3).
+A principal característica que difere entre esses clusters é a receita total onde o cluster 1 obteve em torno de R\$ 700 milhões e o cluster dois obteve quase R\$ 2 milhões.
 
 ```{r tab_cl4}
 tab_cl4 %>%
@@ -257,6 +253,11 @@ tab_cl4 %>%
     caption = "**Tabela 2** Características dos clusters de deputados federais eleitos em 2018."
   )
 ```
+
+O cluster 3 (azul na Figura 3) parece identificar a maioria dos deputados com posicionamento mais à esquerda (Índice de Power e Silveira-Rodrigues negativo), e possui baixa representatividade de deputados evangélicos (n=10, 8% do grupo).
+
+É possível identificar um cluster pequeno (n=2) que agrupou dois deputados com mais de 1 milhão de votos (cluster 4 na Tabela 2, verde escuro na Figura 3).
+Ambos são evangélicos.
 
 ## Avaliação de k=2 clusters
 
