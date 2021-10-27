@@ -183,6 +183,11 @@ knitr::include_graphics("../figures/receita_total.png", error = FALSE)
 knitr::include_graphics("../figures/elbow.png", error = FALSE)
 ```
 
+
+Usando k = 3 clusters o WSS total foi `r format.float(km3$tot.withinss)` que explica `r format.pct(pct.km3)` da variância.
+
+Usando k = 2 clusters o WSS total foi `r format.float(km2$tot.withinss)` que explica `r format.pct(pct.km2)` da variância.
+
 ## Determinação de clusters para k-means: cluster hierárquico
 
 ```{r fig3, fig.cap="**Figura 3** Silhouette plot do cluster hierárquico."}
@@ -201,6 +206,10 @@ knitr::include_graphics("../figures/dendrograma.png", error = FALSE)
 # ![Age](../figures/elbow.png)
 knitr::include_graphics("../figures/elbow_full.png", error = FALSE)
 ```
+
+Usando k = 3 clusters o WSS total foi `r format.float(km3.fd$tot.withinss)` que explica `r format.pct(pct.km3.fd)` da variância.
+
+Usando k = 2 clusters o WSS total foi `r format.float(km2.fd$tot.withinss)` que explica `r format.pct(pct.km2.fd)` da variância.
 
 ```{r fig6, fig.cap="**Figura 6** Silhouette plot do cluster hierárquico com o dataset completo."}
 # ![Age](../figures/silhouette.png)
