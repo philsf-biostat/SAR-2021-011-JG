@@ -70,6 +70,8 @@ gg.elbow <- elbow %>%
   scale_x_continuous(breaks = 1:kmax) +
   # geom_hline(yintercept = elbow$withinss[3], lty = 2, alpha = .8, color = "red") +
   geom_vline(xintercept = 3, lty = 2, alpha = .8, color = "red") +
+  xlab("Número de grupos") +
+  ylab("Soma de quadrados total") +
   geom_line(color = ff.col) +
   geom_point(color = ff.col)
 
@@ -80,6 +82,8 @@ gg.elbow.fd <- elbow.fd %>%
   # geom_hline(yintercept = elbow.fd$withinss[3], lty = 2, alpha = .8, color = "red") +
   geom_vline(xintercept = 3, lty = 2, alpha = .8, color = "red") +
   # geom_hline(yintercept = elbow.fd$withinss[6], lty = 2, alpha = .8, color = "orange") +
+  xlab("Número de grupos") +
+  ylab("Soma de quadrados total") +
   geom_line(color = ff.col) +
   geom_point(color = ff.col)
 
@@ -88,6 +92,8 @@ gg.sil <- avg_sil_hc %>%
   geom_hline(yintercept = avg_sil_hc$avg_sil, lty = 2, alpha = .1) +
   scale_x_continuous(breaks = 1:kmax) +
   geom_vline(xintercept = 3, lty = 2, alpha = .8, color = "red") +
+  xlab("Número de grupos") +
+  ylab("Largura média da silhueta") +
   geom_line(color = ff.col) +
   geom_point(color = ff.col)
 
@@ -96,5 +102,7 @@ gg.sil.fd <- avg_sil_hc.fd %>%
   geom_hline(yintercept = avg_sil_hc.fd$avg_sil, lty = 2, alpha = .1) +
   scale_x_continuous(breaks = 1:kmax) +
   geom_vline(xintercept = 8, lty = 2, alpha = .8, color = "red") +
+  xlab("Número de grupos") +
+  ylab("Largura média da silhueta") +
   geom_line(color = ff.col) +
   geom_point(color = ff.col)
