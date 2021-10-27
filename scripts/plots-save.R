@@ -20,7 +20,7 @@ ggsave(filename = "figures/silhouette.png", plot = gg.sil, height = height, widt
 ggsave(filename = "figures/dendrograma.png", plot = gg.dendro, height = height, width = width, units = units)
 ggsave(filename = "figures/elbow_full.png", plot = gg.elbow.fd, height = height, width = width, units = units)
 ggsave(filename = "figures/silhouette_full.png", plot = gg.sil.fd, height = height, width = width, units = units)
-ggsave(filename = "figures/dendrograma_full.png", plot = gg.dendro.fd, height = 16, width = width, units = units)
+ggsave(filename = "figures/dendrograma_full.png", plot = gg.dendro.fd, height = 16, width = 16, units = units)
 
 # # dendrogramas
 # png(filename = "figures/arvore.png", width = 8, height = 8, units = "cm", res = 300)
