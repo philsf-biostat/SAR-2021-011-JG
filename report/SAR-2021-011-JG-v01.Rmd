@@ -2,7 +2,7 @@
 title: "Clusterização hierárquica para determinação do número ótimo de clusters para classificação de deputados federais como bancada evangélica"
 subtitle: 'DOCUMENTO: SAR-2021-011-JG-v01'
 author: '**De:** Felipe Figueiredo **Para:** Josir Gomes'
-date: '**Data:** 2021-10-12'
+date: '**Data:** 2021-10-27'
 output:
   html_document:
     fig_caption: yes
