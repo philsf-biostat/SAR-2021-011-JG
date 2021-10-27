@@ -233,17 +233,6 @@ tab_cl4 %>%
   )
 ```
 
-## Determinação de clusters para k-means: elbow plot
-
-```{r fig4, fig.cap="**Figura 4** Elbow plot do método k-means."}
-# ![Age](../figures/elbow.png)
-knitr::include_graphics("../figures/elbow.png", error = FALSE)
-```
-
-Usando k = 3 clusters o WSS total foi `r format.float(km3$tot.withinss)` que explica `r format.pct(pct.km3)` da variância.
-
-Usando k = 2 clusters o WSS total foi `r format.float(km2$tot.withinss)` que explica `r format.pct(pct.km2)` da variância.
-
 ## Avaliação de k=2 clusters
 
 A tentativa de agrupar os deputados em k = 2 clusters não identificou um grupo com maioria de evangélicos, com ambos os clusters incluindo cerca de 20% de deputados evangélicos (Tabela 3) com os dados incluídos na análise.
@@ -255,6 +244,17 @@ tab_cl2 %>%
     caption = "**Tabela 3** Características dos clusters de deputados federais eleitos em 2018."
   )
 ```
+
+## Determinação de clusters para k-means: elbow plot
+
+```{r fig4, fig.cap="**Figura 4** Elbow plot do método k-means."}
+# ![Age](../figures/elbow.png)
+knitr::include_graphics("../figures/elbow.png", error = FALSE)
+```
+
+Usando k = 3 clusters o WSS total foi `r format.float(km3$tot.withinss)` que explica `r format.pct(pct.km3)` da variância.
+
+Usando k = 2 clusters o WSS total foi `r format.float(km2$tot.withinss)` que explica `r format.pct(pct.km2)` da variância.
 
 ## Sensibilidade da análise à remoção de variáveis
 
