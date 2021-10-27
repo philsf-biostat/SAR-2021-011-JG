@@ -185,7 +185,32 @@ knitr::include_graphics("../figures/elbow.png", error = FALSE)
 
 ## Determinação de clusters para k-means: cluster hierárquico
 
+```{r fig3, fig.cap="**Figura 3** Silhouette plot do cluster hierárquico."}
+# ![Age](../figures/silhouette.png)
+knitr::include_graphics("../figures/silhouette.png", error = FALSE)
+```
+
+```{r fig4, fig.cap="**Figura 4** Dendrograma do cluster hierárquico, corte na altura h = 2.6."}
+# ![Age](../figures/silhouette.png)
+knitr::include_graphics("../figures/arvore.png", error = FALSE)
+```
+
 ## Sensibilidade da análise à remoção de variáveis
+
+```{r fig5, fig.cap="**Figura 5** Elbow plot do método k-means com o dataset completo."}
+# ![Age](../figures/elbow.png)
+knitr::include_graphics("../figures/elbow_full.png", error = FALSE)
+```
+
+```{r fig6, fig.cap="**Figura 6** Silhouette plot do cluster hierárquico com o dataset completo."}
+# ![Age](../figures/silhouette.png)
+knitr::include_graphics("../figures/silhouette_full.png", error = FALSE)
+```
+
+```{r fig7, fig.cap="**Figura 7** Dendrograma do cluster hierárquico com o dataset completo, cortes nas alturas h = 3.85 (azul) e h = 2.75 (vermelho)."}
+# ![Age](../figures/silhouette.png)
+knitr::include_graphics("../figures/arvore_full.png", error = FALSE)
+```
 
 # Observações e limitações
 
