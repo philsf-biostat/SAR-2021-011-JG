@@ -147,4 +147,4 @@ gg.dendro.fd.b <- hc.c.fd %>%
   geom_hline(yintercept = c(2.75), col = "blue", lty = 2)
 
 # juntar os dois dendrogramas em um painel
-gg.dendro.fd <- gridExtra::grid.arrange(gg.dendro.fd.a, gg.dendro.fd.b, ncol = 1)
+gg.dendro.fd <- gridExtra::arrangeGrob(gg.dendro.fd.a, gg.dendro.fd.b, ncol = 1)
