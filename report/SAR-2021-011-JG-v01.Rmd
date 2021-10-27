@@ -192,7 +192,7 @@ knitr::include_graphics("../figures/silhouette.png", error = FALSE)
 
 ```{r fig4, fig.cap="**Figura 4** Dendrograma do cluster hierárquico, corte na altura h = 2.2."}
 # ![Age](../figures/silhouette.png)
-knitr::include_graphics("../figures/arvore.png", error = FALSE)
+knitr::include_graphics("../figures/dendrograma.png", error = FALSE)
 ```
 
 ## Sensibilidade da análise à remoção de variáveis
@@ -209,7 +209,7 @@ knitr::include_graphics("../figures/silhouette_full.png", error = FALSE)
 
 ```{r fig7, fig.cap="**Figura 7** Dendrograma do cluster hierárquico com o dataset completo, cortes nas alturas h = 3.85 (azul) e h = 2.75 (vermelho)."}
 # ![Age](../figures/silhouette.png)
-knitr::include_graphics("../figures/arvore_full.png", error = FALSE)
+knitr::include_graphics("../figures/dendrograma_full.png", error = FALSE)
 ```
 
 # Observações e limitações
