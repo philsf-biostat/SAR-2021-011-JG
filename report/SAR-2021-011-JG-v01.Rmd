@@ -232,6 +232,8 @@ Estipulando o número de clusters em k = 2, as silhuetas das observações varia
 `r format.float(max(hc2_sum$si.summary))` com
 média `r format.float(hc2_sum$si.summary["Mean"])` e
 mediana `r format.float(hc2_sum$si.summary["Median"])`.
+O cluster 1 incluiu n = `r hc2_clus.sizes[1]` deputados e possui silhueta média `r hc2_clus.avg.widths[1]` e
+o cluster 2 incluiu n = `r hc2_clus.sizes[2]` deputados e possui silhueta média `r hc2_clus.avg.widths[2]`.
 
 <!-- A tabela 2 mostra as características dos 4 clusters. -->
 Os quatro clusters criados não foram suficientes para segregar os deputados evangélicos dos não evangélicos, mas em sua maioria ficaram distribuídos em dois grupos (clusters 1 e 2 na Tabela 2).
