@@ -198,6 +198,8 @@ knitr::include_graphics("../figures/receita_total.png", error = FALSE)
 
 ## Determinação de clusters para k-means: cluster hierárquico
 
+### Número ótimo de clusters
+
 O agrupamento hierárquico foi avaliado para números de clusters (k) entre 2 e 10, e as silhuetas médias de cada agrupamento particular foram calculadas (Figura 2).
 O número de clusters com maior silhueta média é k = 4.
 
@@ -231,6 +233,8 @@ o cluster 4 incluiu n = `r hc4_clus.sizes[4]` deputados e possui silhueta média
 # ![Age](../figures/silhouette.png)
 knitr::include_graphics("../figures/dendrograma.png", error = FALSE)
 ```
+
+### Descrição dos clusters
 
 <!-- A tabela 2 mostra as características dos 4 clusters. -->
 Os quatro clusters obtidos não foram suficientes para discriminar os deputados evangélicos do restante, mas a maioria destes ficou distribuída em dois dos grupos (clusters 1 e 2 na Tabela 2).
