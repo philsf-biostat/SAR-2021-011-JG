@@ -51,6 +51,11 @@ kable(history)
 
 # Lista de abreviaturas
 
+- BSS: soma dos quadrados inter grupos (*between sum of squares*)
+- DP: desvio padrão
+- TSS: soma dos quadrados total (*total sum of squares*)
+- WSS: soma dos quadrados intra grupos (*within sum of squares*)
+
 # Introdução
 
 Avaliação da qualidade do agrupamento de acordo com dois critérios: altura da árvore e número putativo de clusters.
@@ -78,8 +83,9 @@ Base de dados recebida contendo características dos deputados federais eleitos 
 Todas as variáveis da tabela de dados analíticos foram identificadas de acordo com as descrições das variáveis, e os valores foram identificados de acordo com o dicionário de dados providenciado.
 Estas identificações possibilitarão a criação de tabelas de resultados com qualidade de produção final.
 
-Foram feitos ajustes de escala em variáveis para facilitar a interpretação das estimativas da análise de regressão.
-O número de votos foi padronizado em votos por 100 mil, a capilaridade foi padronizada em faixas de 10% e as receitas em milhões de reais.
+Foram feitos ajustes de escala em variáveis para viabilizar a performance dos algoritmos, mantendo a interpretabilidade dos dados.
+O número de votos, o número de filiados do partido foram padronizados por milhão e todas as variáveis relativas às receitas foram padronizados em milhões de reais -- com estas novas escalas todas as variáveis da base tiveram suas amplitudes reduzidas entre 0 e 2.5.
+O posicionamento foi mantido em sua escala original por já ter amplitude de tamanho 2 (entre -1 e 1).
 
 Uma observação não tinha o número de votos registrada, e foi removida para a análise de clusters.
 
@@ -93,26 +99,40 @@ source("scripts/results.R", encoding = 'UTF-8')
 
 ### Desfechos primário e secundário
 
-O desfecho primário está definido como a classificação entre deputados da bancada evangélica e outros deputados explicada pela receita total recebida.
+O desfecho primário está definido como o número ótimo de clusters para uso no algoritmo k-means.
+O número de clusters foi definido de acordo com a largura média da silhueta no agrupamento hierárquico.
+
+O desfecho secundário é a avaliação do k-means com dois clusters (k=2) para a classificação entre deputados da bancada evangélica e outros deputados explicada pela receita total recebida.
 
 ### Covariáveis
 
 As seguintes características dos deputados federais foram consideradas para inclusão na análise: Número de votos recebidos, posicionamento político, capilaridade, a unidade da federação, o partido (sigla), o sexo e se é o primeiro mandato.
 As seguintes características dos partidos foram consideradas para inclusão na análise:  decil do número de deputados eleitos e decil do número de filiados.
 
-As receitas discriminadas em suas diversas origens não foram consideradas na análise principal, devido à baixa representatividade de valores em suas distribuições (figura A1).
-O impacto da exclusão destas variáveis nos clusters foi avaliada em uma análise de sensibilidade.
+As receitas discriminadas em suas diversas origens não foram consideradas na análise principal, pois a densidade das distribuições indica que a maior parte dos deputados não recebeu valores em cada uma destas fontes (figura A1).
+O número de filiados do partido também não foi incluido em favor do decil de filiados do partido.
+O impacto da exclusão destas variáveis na clusterização foi avaliado em uma análise de sensibilidade.
 
 ## Análises Realizadas
 
-As características dos deputados foram descritas, por estado, como
+As características dos deputados foram descritas como
 média (DP)
 <!-- mediana (IIQ) -->
 ou frequência e proporção (%),
 conforme apropriado.
 As distribuições foram sumarizadas em tabelas e visualizadas em gráficos exploratórios.
 
-### Softwares utilizados
+O número ótimo de clusters foi determinado por dois métodos: agrupamento hierárquico e o elbow plot do k-means.
+
+O agrupamento hierárquico foi realizado usando a distância euclidiana e o critério de ligação completa (*complete linkage*).
+O agrupamento hierárquico foi avaliado pelo método da silhueta, onde as larguras das silhuetas de cada observação são calculadas individualmente resultando em uma medida interpretável do pertencimento ao cluster avaliado.
+Valores positivos de silhueta indicam um bom ajuste da observação ao cluster.
+A média das larguras das silhuetas foi calculada como critério de avaliação global do agrupamento hierárquico.
+
+O agrupamento diretamente pelo método k-means também foi avaliado pela redução do WSS total (elbow plot).
+Após a determinação do número ótimo de clusters, dois agrupamentos k-means foram realizados para diagnóstico usando a distância euclidiana e 10 centroides iniciais aleatórios -- o primeiro usando o número ótimo de clusters (desfecho primário) e o segundo usando dois clusters (desfecho secundário).
+O agrupamento do k-means foi avaliado globalmente com o WSS total e foi apresentada a proporção da variância entre grupos que é explicada pelo agrupamento.
+Esta proporção foi calculada como $\text{variância explicada} = \frac{BSS}{TSS} \times 100$.
 
 Esta análise foi realizada utilizando-se o software `R` versão `r getRversion()`.
 
@@ -176,20 +196,161 @@ R\$ 12075 e R\$ 2500500 entre os demais (Tabela 1 e Figura 1).
 knitr::include_graphics("../figures/receita_total.png", error = FALSE)
 ```
 
-## Determinação de clusters para k-means: elbow plot
+## Determinação de clusters para k-means: cluster hierárquico
 
-```{r fig2, fig.cap="**Figura 2** Elbow plot do método k-means."}
+### Número ótimo de clusters
+
+O agrupamento hierárquico foi avaliado para números de clusters (k) entre 2 e 10, e as silhuetas médias de cada agrupamento particular foram calculadas (Figura 2).
+O número de clusters com maior silhueta média é k = 4.
+
+```{r fig2, fig.cap="**Figura 2** Variação da silhueta média do cluster hierárquico para diferentes valores de k."}
+# ![Age](../figures/silhouette.png)
+knitr::include_graphics("../figures/silhouette.png", error = FALSE)
+```
+
+```{r silhuetas4, include=FALSE}
+hc4_sum <- summary(hc4_sil)
+hc4_avg.width <- format.float(hc4_sum$avg.width)
+hc4_clus.sizes <- hc4_sum$clus.sizes
+hc4_clus.avg.widths <- format.float(hc4_sum$clus.avg.widths)
+```
+
+Estipulando o número ótimo de clusters em k = 4, as silhuetas das observações variam entre
+`r format.float(min(hc4_sum$si.summary))` e
+`r format.float(max(hc4_sum$si.summary))` com
+média `r format.float(hc4_sum$si.summary["Mean"])` e
+mediana `r format.float(hc4_sum$si.summary["Median"])`.
+Este agrupamento em particular pode ser identificado cortando-se o dendrograma do agrupamento hierárquico na altura h = 2.2 (Figura 3).
+Isto significa que a maior distância entre dois clusters não supera h = 2.2.
+
+As silhuetas médias dos clusters indicam que o agrupamento foi bem sucedido em discriminar características dos deputados com os dados avaliados.
+O cluster 1 incluiu n = `r hc4_clus.sizes[1]` deputados e possui silhueta média `r hc4_clus.avg.widths[1]`,
+o cluster 2 incluiu n = `r hc4_clus.sizes[2]` deputados e possui silhueta média `r hc4_clus.avg.widths[2]`,
+o cluster 3 incluiu n = `r hc4_clus.sizes[3]` deputados e possui silhueta média `r hc4_clus.avg.widths[3]` e
+o cluster 4 incluiu n = `r hc4_clus.sizes[4]` deputados e possui silhueta média `r hc4_clus.avg.widths[4]`.
+
+```{r fig3, fig.cap="**Figura 3** Dendrograma do cluster hierárquico, corte na altura h = 2.2."}
+# ![Age](../figures/silhouette.png)
+knitr::include_graphics("../figures/dendrograma.png", error = FALSE)
+```
+
+### Descrição dos clusters
+
+<!-- A tabela 2 mostra as características dos 4 clusters. -->
+Os quatro clusters obtidos não foram suficientes para discriminar os deputados evangélicos do restante, mas a maioria destes ficou distribuída em dois dos grupos (clusters 1 e 2 na Tabela 2).
+O cluster 1 tem 226 deputados (verde na figura 3) e em sua composição 30% dos deputados incluídos são evangélicos, enquanto o cluster 2 tem 153 deputados dos quais 24% são evangélicos (vermelho na figura 3).
+A principal característica que difere entre esses clusters é a receita total onde o cluster 1 obteve em torno de R\$ 700 milhões e o cluster dois obteve quase R\$ 2 milhões.
+
+```{r tab_cl4}
+tab_cl4 %>%
+  as_kable(
+    caption = "**Tabela 2** Características dos clusters de deputados federais eleitos em 2018, determinadas por agrupamento hierárquico com k = 4 clusters."
+  )
+```
+
+O cluster 3 (azul na Figura 3) parece identificar a maioria dos deputados com posicionamento mais à esquerda (Índice de Power e Silveira-Rodrigues negativo), e possui baixa representatividade de deputados evangélicos (n=10, 8% do grupo).
+
+É possível identificar um cluster pequeno (n=2) que agrupou dois deputados com mais de 1 milhão de votos (cluster 4 na Tabela 2, verde escuro na Figura 3).
+Ambos são evangélicos.
+
+## Avaliação dos clusters do método k-means
+
+O método k-means foi utilizado de forma exploratória para determinação do número ótimo de clusters conforme mensurado pela queda do WSS.
+Foram avaliados os possíveis números de clusters (k) de 1 a 10.
+O número ótimo de clusters obtido foi k = 3, onde houve a queda de WSS mais expressiva (Figura 4).
+Usando k = 3 clusters o WSS total foi `r format.float(km3$tot.withinss)` que explica `r format.pct(pct.km3)` da variância entre os grupos.
+
+```{r fig4, fig.cap="**Figura 4** Elbow plot do método k-means."}
 # ![Age](../figures/elbow.png)
 knitr::include_graphics("../figures/elbow.png", error = FALSE)
 ```
 
-## Determinação de clusters para k-means: cluster hierárquico
+## Caso particular com k=2 clusters
 
-## Sensibilidade da análise à remoção de variáveis
+Os métodos descritos nas seções anteriores foram aplicados ao caso particular de se buscar exatamente 2 agrupamentos que discriminassem os deputados evangélicos dos demais.
+
+**Clusterização hierárquica**
+
+```{r silhuetas2, include=FALSE}
+hc2_sum <- summary(hc2_sil)
+hc2_avg.width <- format.float(hc2_sum$avg.width)
+hc2_clus.sizes <- hc2_sum$clus.sizes
+hc2_clus.avg.widths <- format.float(hc2_sum$clus.avg.widths)
+```
+
+Estipulando o número de clusters em k = 2 no agrupamento hierárquico, as silhuetas das observações variam entre
+`r format.float(min(hc2_sum$si.summary))` e
+`r format.float(max(hc2_sum$si.summary))` com
+média `r format.float(hc2_sum$si.summary["Mean"])` e
+mediana `r format.float(hc2_sum$si.summary["Median"])`.
+O cluster 1 incluiu n = `r hc2_clus.sizes[1]` deputados e possui silhueta média `r hc2_clus.avg.widths[1]` e
+o cluster 2 incluiu n = `r hc2_clus.sizes[2]` deputados e possui silhueta média `r hc2_clus.avg.widths[2]`.
+
+A tentativa de agrupar os deputados em k = 2 clusters não identificou um grupo com maioria de evangélicos, com ambos os clusters incluindo cerca de 20% de deputados evangélicos (Tabela 3) com os dados incluídos na análise.
+A principal característica que parece discriminar estes grupos é a receita total recebida, onde o cluster 1 obteve em média R\$ 760 mil, enquanto o cluster 2 obteve próximo de R\$ 2 milhões.
+
+```{r tab_cl2}
+tab_cl2 %>%
+  as_kable(
+    caption = "**Tabela 3** Características dos clusters de deputados federais eleitos em 2018, determinadas por agrupamento hierárquico com k = 2 clusters."
+  )
+```
+
+**Método k-means**
+
+A qualidade do agrupamento por k-means também foi avaliada para este caso particular.
+Usando k = 2 clusters o WSS total foi `r format.float(km2$tot.withinss)` que explica `r format.pct(pct.km2)` da variância entre os grupos.
+
+## Sensibilidade da análise à exclusão de variáveis
+
+O método elbow plot para determinação do número de clusters do k-means não demonstrou sensibilidade à exclusão das variáveis de origens individuais de receita e número de filiados, tendo resultado no mesmo número k=3 de clusters da análise principal (Figura 5).
+Com o número ótimo de clusters (k = 3) o WSS total foi `r format.float(km3.fd$tot.withinss)` que explica `r format.pct(pct.km3.fd)` da variância.
+
+Usando k = 2 clusters o WSS total foi `r format.float(km2.fd$tot.withinss)` que explica `r format.pct(pct.km2.fd)` da variância.
+
+```{r fig5, fig.cap="**Figura 5** Elbow plot do método k-means com o dataset completo."}
+# ![Age](../figures/elbow.png)
+knitr::include_graphics("../figures/elbow_full.png", error = FALSE)
+```
+
+O método de agrupamento hierárquico se mostrou sensível à exclusão destas variáveis.
+Com o dataset completo o número ótimo de clusters é k=8 onde 
+a maior silhueta média foi `r format.float(hc_sil(hc.c.fd, 8, nb.dist.fd))` (figura 6).
+Esta silhueta média é substancialmente menor que o resultado obtido na análise principal, indicando uma menor coesão dos grupos gerados e portanto uma menor qualidade dos agrupamentos.
+Ao comparar o mesmo número de clusters da análise principal (k=4) observa-se
+silhueta média foi `r format.float(hc_sil(hc.c.fd, 4, nb.dist.fd))`.
+
+```{r fig6, fig.cap="**Figura 6** Variação da silhueta média do cluster hierárquico para diferentes valores de k, com o dataset completo."}
+# ![Age](../figures/silhouette.png)
+knitr::include_graphics("../figures/silhouette_full.png", error = FALSE)
+```
+
+Os dois agrupamentos acima podem ser observados na figura 7, com seus respectivos cortes nas alturas do dendrograma.
+Observa-se em ambos os casos que a maior parte dos deputados encontram-se nos primeiros clusters.
+No caso k=4 (Figura 7A) os deputados são majoritariamente agrupados nos 3 primeiros clusters, e o último cluster possui 6 deputados.
+No caso k=8 (Figura 7B) apenas 10 deputados foram alocados nos últimos 4.
+
+```{r fig7, fig.cap="**Figura 7** Dendrograma do cluster hierárquico com o dataset completo, cortes nas alturas h = 3.85 (vermelho) e h = 2.75 (azul)."}
+# ![Age](../figures/silhouette.png)
+knitr::include_graphics("../figures/dendrograma_full.png", error = FALSE)
+```
 
 # Observações e limitações
 
+- ajuste de escala: contraponto entre estabilidade numérica vs interpretabilidade
+- sensibilidade: (clusters mt pq)
+  É possível que esses clusters tenham identificado os casos de deputados com características anômalas em relação aos demais (*outliers*).
+- recomendações outliers: remover (e redefinir a população), ou tentar isolar aumentando k
+
 # Conclusões
+
+O número ótimo de clusters identificado no agrupamento hierárquico foi k = 4 clusters.
+
+Este número de clusters possibilita identificar dois grupos de evangélicos com receitas totais diferentes.
+Um terceiro grupo parece conter a maioria dos deputados com posicionamento à esquerda política e o último grupo é integrado por 2 deputados que receberam um número de votos desproporcionalmente maior que os demais.
+
+O caso particular com dois clusters foi avaliado mas não foi possível discriminar os deputados evangélicos nesta base de dados.
+Os dois grupos gerados pelo método parecem diferir principalmente pela renda total recebida.
 
 # Referências
 
@@ -204,13 +365,6 @@ knitr::include_graphics("../figures/elbow.png", error = FALSE)
 
 # ![Age](../figures/receitas.png)
 knitr::include_graphics("../figures/receitas.png", error = FALSE)
-```
-
-```{r A2, fig.cap="**Figura A2** Elbow plot do método k-means, com o full dataset."}
-
-# ![elbow full](../figures/elbow_full.png)
-knitr::include_graphics("../figures/elbow_full.png", error = FALSE)
-
 ```
 
 ## Disponibilidade

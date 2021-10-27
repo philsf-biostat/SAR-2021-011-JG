@@ -56,7 +56,7 @@ data.raw <- data.raw %>%
     primeira = "Releição vs primeiro mandato",
     sexo = "Sexo",
     evangelico = "Evangélico",
-    num_votos = "Votos (100k)",
+    num_votos = "Votos (milhão)",
     decil_filiados = "Decil do núm. de filiados",
     decil_deputados = "Decil do núm. de deputados",
     total_receita = "Receita total (milhão R$)",
