@@ -216,7 +216,7 @@ Usando k = 2 clusters o WSS total foi `r format.float(km2.fd$tot.withinss)` que 
 knitr::include_graphics("../figures/silhouette_full.png", error = FALSE)
 ```
 
-```{r fig7, fig.cap="**Figura 7** Dendrograma do cluster hierárquico com o dataset completo, cortes nas alturas h = 3.85 (azul) e h = 2.75 (vermelho)."}
+```{r fig7, fig.cap="**Figura 7** Dendrograma do cluster hierárquico com o dataset completo, cortes nas alturas h = 3.85 (vermelho) e h = 2.75 (azul)."}
 # ![Age](../figures/silhouette.png)
 knitr::include_graphics("../figures/dendrograma_full.png", error = FALSE)
 ```
