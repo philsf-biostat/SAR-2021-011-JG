@@ -344,10 +344,24 @@ knitr::include_graphics("../figures/dendrograma_full.png", error = FALSE)
 
 # Observações e limitações
 
-- ajuste de escala: contraponto entre estabilidade numérica vs interpretabilidade
-- sensibilidade: (clusters mt pq)
-  É possível que esses clusters tenham identificado os casos de deputados com características anômalas em relação aos demais (*outliers*).
-- recomendações outliers: remover (e redefinir a população), ou tentar isolar aumentando k
+As escalas das variáveis foram ajustadas de acordo com os critérios arbitrados nos métodos ao invés da abordagem usual de padronizar em relação à média e DP dos dados.
+Esta escolha foi feita de modo a manter a interpretabilidade dos valores, em detrimento de um possível ganho de estabilidade numérica do algoritmo.
+Não há consenso na literatura sobre a abordagem de escalonamento das variáveis e por isto esta escolha metodológica deve ser apresentada explicitamente, junto com a justificativa técnica para tal.
+
+O algoritmo de clusterização hierárquico se mostrou sensível à exclusão de variáveis com baixa informação presumida.
+Como a maior parte dos deputados possuía valor nulo obtidas destas fontes de receita (Figura A1) é possível que estas variáveis contribuam para agrupamentos mais sensíveis à presença ou ausência de receitas em fontes específicas.
+Embora a qualidade geral do agrupamento seja maior com a exclusão, é possível que os agrupamentos gerados com todas as variáveis tenham maior poder de explicar os dados
+
+Além disso o agrupamento hierárquico realizado com todos os dados gerou alguns agrupamentos com poucas observações.
+Especula-se que um aumento do número de clusters nesse dataset seja capaz de isolar os *outliers* em grupos pequenos, criando outros grupos mais balanceados.
+Talvez isso resulte em um agrupamento que identifique os deputados evangélicos em um ou mais clusters e discrimine as características que os diferem dos demais deputados.
+
+Por fim, a presença de *outliers* é sempre delicada, e os resultados precisam ser interpretados com cautela.
+Com base nos resultados desta análise, duas recomendações podem ser observadas para o tratamento de outliers neste dataset:
+
+1. **Remover os *outliers***.
+  Isto implica em redefinir a população estudada (por exemplo, deputados federais com número de votos ou receita próximos do típico) e, portanto, ajustar o escopo do objetivo do estudo.
+1. **Avaliar uma clusterização com maior número (k) de clusters, para tentar isolar os outliers em grupos pequenos**.
 
 # Conclusões
 
