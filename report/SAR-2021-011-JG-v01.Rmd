@@ -303,15 +303,21 @@ Usando k = 2 clusters o WSS total foi `r format.float(km2$tot.withinss)` que exp
 
 ## Sensibilidade da análise à exclusão de variáveis
 
-O método elbow plot para determinação do número de clusters do k-means não demonstrou sensibilidade à exclusão das variáveis de origens individuais de receita e número de filiados, tendo resultado no mesmo número k=3 de clusters da análise principal (Figura 5).
-Com o número ótimo de clusters (k = 3) o WSS total foi `r format.float(km3.fd$tot.withinss)` que explica `r format.pct(pct.km3.fd)` da variância.
+**Método k-means**
 
-Usando k = 2 clusters o WSS total foi `r format.float(km2.fd$tot.withinss)` que explica `r format.pct(pct.km2.fd)` da variância.
+O método elbow plot para determinação do número de clusters do k-means não demonstrou sensibilidade à exclusão das variáveis de origens individuais de receita e número de filiados, tendo resultado no mesmo número k=3 de clusters da análise principal (Figura 5).
+Com o número ótimo de clusters (k = 3) o WSS total foi `r format.float(km3.fd$tot.withinss)` que explica `r format.pct(pct.km3.fd)` da variância entre os grupos.
+A exclusão das variáveis causou uma redução do WSS total para `r format.float(km3.fd$tot.withinss - km3$tot.withinss)`, associada a um aumento de `r format.pct(pct.km3 - pct.km3.fd)` na variância explicada ente os grupos.
+
+Usando k = 2 clusters o WSS total foi `r format.float(km2.fd$tot.withinss)` que explica `r format.pct(pct.km2.fd)` da variância entre os grupos.
+A exclusão das variáveis causou uma redução do WSS total para `r format.float(km2.fd$tot.withinss - km2$tot.withinss)`, associada a um aumento de `r format.pct(pct.km2 - pct.km2.fd)` na variância explicada entre os grupos.
 
 ```{r fig5, fig.cap="**Figura 5** Elbow plot do método k-means com o dataset completo."}
 # ![Age](../figures/elbow.png)
 knitr::include_graphics("../figures/elbow_full.png", error = FALSE)
 ```
+
+**Clusterização hierárquica**
 
 O método de agrupamento hierárquico se mostrou sensível à exclusão destas variáveis.
 Com o dataset completo o número ótimo de clusters é k=8 onde 
@@ -319,6 +325,7 @@ a maior silhueta média foi `r format.float(hc_sil(hc.c.fd, 8, nb.dist.fd))` (fi
 Esta silhueta média é substancialmente menor que o resultado obtido na análise principal, indicando uma menor coesão dos grupos gerados e portanto uma menor qualidade dos agrupamentos.
 Ao comparar o mesmo número de clusters da análise principal (k=4) observa-se
 silhueta média foi `r format.float(hc_sil(hc.c.fd, 4, nb.dist.fd))`.
+A exclusão das variáveis causou um aumento da silhueta média do agrupamento em `r format.float(hc4_sum$si.summary["Mean"] - hc_sil(hc.c, 4, nb.dist.fd))`.
 
 ```{r fig6, fig.cap="**Figura 6** Variação da silhueta média do cluster hierárquico para diferentes valores de k, com o dataset completo."}
 # ![Age](../figures/silhouette.png)
