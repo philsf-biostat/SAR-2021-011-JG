@@ -382,14 +382,6 @@ Os dois grupos gerados pelo método parecem diferir principalmente pela renda to
 
 # Apêndice
 
-## Análise exploratória de dados
-
-```{r A1, fig.cap="**Figura A1** Distribuição das receitas de deputados federais, por origem (agp = receita que veio do Partido ao invés de apoiadores privados (empresariais ou não); agr = setor agrícola; com = setor do comércio; fin = setor específico dos bancos e outras instituições financeiras e imobiliárias; ind = setores da indústria; inf = setor de infraestrutura; pf = pessoa física; rp = recursos próprios; ser = setor de serviços). "}
-
-# ![Age](../figures/receitas.png)
-knitr::include_graphics("../figures/receitas.png", error = FALSE)
-```
-
 ## Disponibilidade
 
 Tanto este documento como o plano analítico correspondente (**SAP-2021-011-JG-v01**) podem ser obtidos no seguinte endereço:
@@ -409,4 +401,12 @@ https://github.com/philsf-biostat/SAR-2021-011-JG/
 #   pander(caption = "**Table A1** Tabela de dados analíticos")
 analytical_mockup %>%
   pander(caption = "**Tabela A1** Estrutura da tabela de dados analíticos")
+```
+
+## Análise exploratória de dados
+
+```{r A1, fig.cap="**Figura A1** Distribuição das receitas de deputados federais, por origem (agp = receita que veio do Partido ao invés de apoiadores privados (empresariais ou não); agr = setor agrícola; com = setor do comércio; fin = setor específico dos bancos e outras instituições financeiras e imobiliárias; ind = setores da indústria; inf = setor de infraestrutura; pf = pessoa física; rp = recursos próprios; ser = setor de serviços). "}
+
+# ![Age](../figures/receitas.png)
+knitr::include_graphics("../figures/receitas.png", error = FALSE)
 ```
