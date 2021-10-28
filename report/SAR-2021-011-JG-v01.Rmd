@@ -377,7 +377,7 @@ https://github.com/philsf-biostat/SAR-2021-011-JG/
 
 ## Dados utilizados
 
-Os dados utilizados neste relatório não podem ser publicados online por questões de sigilo.
+<!-- Os dados utilizados neste relatório não podem ser publicados online por questões de sigilo. -->
 
 ```{r data}
 # print analytical of analytical_mockup whether it is the private or public version of the SAR
