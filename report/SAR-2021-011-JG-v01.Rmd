@@ -223,7 +223,7 @@ mediana `r format.float(hc4_sum$si.summary["Median"])`.
 Este agrupamento em particular pode ser identificado cortando-se o dendrograma do agrupamento hierárquico na altura h = 2.2 (Figura 3).
 Isto significa que a maior distância entre dois clusters não supera h = 2.2.
 
-As silhuetas médias dos clusters indicam que o agrupamento foi bem sucedido em discriminar características dos deputados com os dados avaliados.
+As silhuetas médias dos clusters indicam que o agrupamento foi bem-sucedido em discriminar características dos deputados com os dados avaliados.
 O cluster 1 incluiu n = `r hc4_clus.sizes[1]` deputados e possui silhueta média `r hc4_clus.avg.widths[1]`,
 o cluster 2 incluiu n = `r hc4_clus.sizes[2]` deputados e possui silhueta média `r hc4_clus.avg.widths[2]`,
 o cluster 3 incluiu n = `r hc4_clus.sizes[3]` deputados e possui silhueta média `r hc4_clus.avg.widths[3]` e
@@ -250,7 +250,7 @@ tab_cl4 %>%
 
 O cluster 3 (azul na Figura 3) parece identificar a maioria dos deputados com posicionamento mais à esquerda (Índice de Power e Silveira-Rodrigues negativo), e possui baixa representatividade de deputados evangélicos (n=10, 8% do grupo).
 
-É possível identificar um cluster pequeno (n=2) que agrupou dois deputados com mais de 1 milhão de votos (cluster 4 na Tabela 2, verde escuro na Figura 3).
+É possível identificar um cluster pequeno (n=2) que agrupou dois deputados com mais de 1 milhão de votos (cluster 4 na Tabela 2, verde-escuro na Figura 3).
 Ambos são evangélicos.
 
 ## Avaliação dos clusters do método k-means
@@ -357,10 +357,10 @@ Especula-se que um aumento do número de clusters nesse dataset seja capaz de is
 Talvez isso resulte em um agrupamento que identifique os deputados evangélicos em um ou mais clusters e discrimine as características que os diferem dos demais deputados.
 
 Por fim, a presença de *outliers* é sempre delicada, e os resultados precisam ser interpretados com cautela.
-Com base nos resultados desta análise, duas recomendações podem ser observadas para o tratamento de outliers neste dataset:
+Com base nos resultados desta análise, duas recomendações podem ser observadas para o tratamento de *outliers* neste dataset:
 
 1. **Remover os *outliers***.
-  Isto implica em redefinir a população estudada (por exemplo, deputados federais com número de votos ou receita próximos do típico) e, portanto, ajustar o escopo do objetivo do estudo.
+  Isto implica redefinir a população estudada (por exemplo, deputados federais com número de votos, ou receita, próximos do típico) e, portanto, ajustar o escopo do objetivo do estudo.
 1. **Avaliar uma clusterização com maior número (k) de clusters, para tentar isolar os outliers em grupos pequenos**.
 
 # Conclusões
