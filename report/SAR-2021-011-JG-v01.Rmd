@@ -369,9 +369,9 @@ knitr::include_graphics("../figures/receitas.png", error = FALSE)
 
 ## Disponibilidade
 
-<!-- Tanto este documento como o plano analítico correspondente (**SAP-2021-011-JG-v01**) podem ser obtidos no seguinte endereço: -->
+Tanto este documento como o plano analítico correspondente (**SAP-2021-011-JG-v01**) podem ser obtidos no seguinte endereço:
 
-Este documento pode ser obtido no seguinte endereço:
+<!-- Este documento pode ser obtido no seguinte endereço: -->
 
 https://github.com/philsf-biostat/SAR-2021-011-JG/
 
@@ -385,5 +385,5 @@ https://github.com/philsf-biostat/SAR-2021-011-JG/
 # analytical %>%
 #   pander(caption = "**Table A1** Tabela de dados analíticos")
 analytical_mockup %>%
-  pander(caption = "**Table A1** Estrutura da tabela de dados analíticos")
+  pander(caption = "**Tabela A1** Estrutura da tabela de dados analíticos")
 ```
