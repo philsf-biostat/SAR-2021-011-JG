@@ -355,6 +355,7 @@ Embora a qualidade geral do agrupamento seja maior com a exclusão, é possível
 Além disso o agrupamento hierárquico realizado com todos os dados gerou alguns agrupamentos com poucas observações.
 Especula-se que um aumento do número de clusters nesse dataset seja capaz de isolar os *outliers* em grupos pequenos, criando outros grupos mais balanceados.
 Talvez isso resulte em um agrupamento que identifique os deputados evangélicos em um ou mais clusters e discrimine as características que os diferem dos demais deputados.
+As variáveis do dataset que possuem *outliers* foram estatisticamente detectáveis em outra análise associada ao problema aqui avaliado (**SAR-2021-012-JG-v01**).
 
 Por fim, a presença de *outliers* é sempre delicada, e os resultados precisam ser interpretados com cautela.
 Com base nos resultados desta análise, duas recomendações podem ser observadas para o tratamento de *outliers* neste dataset:
@@ -376,6 +377,7 @@ Os dois grupos gerados pelo método parecem diferir principalmente pela renda to
 # Referências
 
 - **SAP-2021-011-JG-v01** -- Plano Analítico para Clusterização hierárquica para determinação do número ótimo de clusters para classificação de deputados federais como bancada evangélica
+- **SAR-2021-012-JG-v01** -- Quantificação do efeito da receita recebida na autodenominação como evangélicos em deputados federais de 2018
 <!-- - Cohen, J. (1988). Statistical power analysis for the behavioral sciences (2nd Ed.). New York: Routledge. -->
 
 # Apêndice
