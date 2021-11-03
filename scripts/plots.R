@@ -1,6 +1,4 @@
 # setup -------------------------------------------------------------------
-# library(ggplot2)
-# library(survminer)
 library(dendextend)
 library(ggdendro)
 
@@ -31,35 +29,6 @@ gg.receitas <- data.raw %>%
   scale_fill_brewer(palette = ff.pal) +
   facet_wrap(~name + evangelico, ncol = 4) +
   labs(x = "", y = "", subtitle = "Distribuição das receitas, por origem")
-
-# data.raw %>%
-#   filter(!is.na(igreja)) %>%
-#   ggplot(aes(igreja)) +
-#   geom_bar(fill = ff.col) +
-#   coord_flip() +
-#   labs(x = "", y = "")
-
-# analytical %>%
-#   select_if(is.factor) %>%
-#   pivot_longer(c(primeira, sexo)) %>%
-#   ggplot(aes(value, fill = evangelico)) +
-#   geom_bar(position = "fill") +
-#   coord_flip() +
-#   facet_wrap(~name) +
-#   scale_color_brewer(palette = ff.pal) +
-#   scale_fill_brewer(palette = ff.pal)
-
-# gg +
-#   geom_density(aes(num_votos, fill = evangelico), alpha = .6) +
-#   xlab(attr(analytical$num_votos, "label")) + ylab("")
-
-# gg +
-#   geom_hline(yintercept = mean(analytical$total_receita), lty = 4, size = .2) +
-#   geom_point(aes(num_votos, total_receita, col = evangelico)) +
-#   # geom_vline(xintercept = 4, col = "blue") +
-#   geom_vline(xintercept = 5, col = "red") +
-#   xlab(attr(analytical$num_votos, "label")) +
-#   ylab(attr(analytical$total_receita, "label"))
 
 gg.rec_total <- gg +
   geom_histogram(aes(total_receita), binwidth = .5, fill = ff.col) +
@@ -110,12 +79,6 @@ gg.sil.fd <- avg_sil_hc.fd %>%
   geom_line(color = ff.col) +
   geom_point(color = ff.col)
 
-# gg.dendro <- ggdendrogram(hc.c, labels = FALSE) +
-#   geom_hline(yintercept = c(2.6), col = "red")
-
-# gg.dendro.fd <- ggdendrogram(hc.c.fd, labels = FALSE) +
-#   geom_hline(yintercept = c(2.75, 3.85), col = c("red", ff.col))
-
 gg.dendro <- hc.c %>%
   as.dendrogram() %>%
   color_branches(h = 2.2) %>%
@@ -165,3 +128,40 @@ gg.dendro.fd.b <- hc.c.fd %>%
 
 # juntar os dois dendrogramas em um painel
 gg.dendro.fd <- gridExtra::arrangeGrob(gg.dendro.fd.a, gg.dendro.fd.b, ncol = 1)
+
+# testes ------------------------------------------------------------------
+
+# data.raw %>%
+#   filter(!is.na(igreja)) %>%
+#   ggplot(aes(igreja)) +
+#   geom_bar(fill = ff.col) +
+#   coord_flip() +
+#   labs(x = "", y = "")
+
+# analytical %>%
+#   select_if(is.factor) %>%
+#   pivot_longer(c(primeira, sexo)) %>%
+#   ggplot(aes(value, fill = evangelico)) +
+#   geom_bar(position = "fill") +
+#   coord_flip() +
+#   facet_wrap(~name) +
+#   scale_color_brewer(palette = ff.pal) +
+#   scale_fill_brewer(palette = ff.pal)
+
+# gg +
+#   geom_density(aes(num_votos, fill = evangelico), alpha = .6) +
+#   xlab(attr(analytical$num_votos, "label")) + ylab("")
+
+# gg +
+#   geom_hline(yintercept = mean(analytical$total_receita), lty = 4, size = .2) +
+#   geom_point(aes(num_votos, total_receita, col = evangelico)) +
+#   # geom_vline(xintercept = 4, col = "blue") +
+#   geom_vline(xintercept = 5, col = "red") +
+#   xlab(attr(analytical$num_votos, "label")) +
+#   ylab(attr(analytical$total_receita, "label"))
+
+# gg.dendro <- ggdendrogram(hc.c, labels = FALSE) +
+#   geom_hline(yintercept = c(2.6), col = "red")
+
+# gg.dendro.fd <- ggdendrogram(hc.c.fd, labels = FALSE) +
+#   geom_hline(yintercept = c(2.75, 3.85), col = c("red", ff.col))

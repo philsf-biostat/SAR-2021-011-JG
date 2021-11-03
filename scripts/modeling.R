@@ -1,9 +1,4 @@
 # setup -------------------------------------------------------------------
-# library(gt)
-# library(gtsummary)
-# library(moderndive)
-# library(broom)
-# library(broom.mixed)
 library(cluster)
 
 km_ss <- function(data, k) {
@@ -81,7 +76,3 @@ km3 <- kmeans(nb[, -1], centers = 3, nstart = 10)
 km3.fd <- kmeans(nb.fd[, -1], centers = 3, nstart = 10)
 pct.km3 <- km3$betweenss / km3$totss
 pct.km3.fd <- km3.fd$betweenss / km3.fd$totss
-
-# kmeans com 2 clusters
-# CrossTable(km2_a$cluster, analytical$evangelico, mcnemar = TRUE)
-# CrossTable(km2_t$cluster, data.raw$evangelico, mcnemar = TRUE)

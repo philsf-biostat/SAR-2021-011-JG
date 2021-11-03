@@ -1,16 +1,11 @@
 # setup -------------------------------------------------------------------
-# library(data.table)
 library(tidyverse)
-# library(readxl)
-# library(lubridate)
 library(labelled)
 
 # data loading ------------------------------------------------------------
 set.seed(42)
-# data.raw <- tibble(id=gl(2, 10), group = gl(2, 10), outcome = rnorm(20))
 data.raw <- read_csv("dataset/eleitos_2018.csv") %>%
   janitor::clean_names()
-
 
 # data cleaning -----------------------------------------------------------
 
