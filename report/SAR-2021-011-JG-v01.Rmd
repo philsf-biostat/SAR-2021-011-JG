@@ -36,6 +36,8 @@ panderOptions('table.split.table', 160)
 
 ---
 
+**Clusterização hierárquica para determinação do número ótimo de clusters de deputados federais evangélicos eleitos em 2018**
+
 **Histórico do documento**
 
 ```{r history}

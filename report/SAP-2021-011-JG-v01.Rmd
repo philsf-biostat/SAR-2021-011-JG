@@ -36,6 +36,8 @@ panderOptions('table.split.table', 160)
 
 ---
 
+**Plano Analítico para Clusterização hierárquica para determinação do número ótimo de clusters para classificação de deputados federais como bancada evangélica**
+
 **Histórico do documento**
 
 ```{r history}
