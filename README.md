@@ -39,14 +39,14 @@ Análise Estatística para Josir Gomes (Doutorado IBICT/UFRJ, 2021).
 Esta análise está associada à outra, complementar, que usa técnicas de *statistical learning*.
 Aquela pode ser vista em:
 
-https://github.com/philsf-biostat/SAR-2021-012-JG
+<https://philsf-biostat.github.io/SAR-2021-012-JG/>
 
 ## Portfólio
 
 Esta análise está incluída no portfólio do consultor.
 Outras análises também podem ser vistas em:
 
-https://philsf-biostat.github.io/
+<https://philsf-biostat.github.io/>
 
 <!-- --- -->
 

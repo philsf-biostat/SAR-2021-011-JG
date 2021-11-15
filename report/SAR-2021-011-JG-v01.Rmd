@@ -2,7 +2,7 @@
 title: "Clusterização hierárquica para determinação do número ótimo de clusters de deputados federais evangélicos eleitos em 2018"
 subtitle: 'DOCUMENTO: SAR-2021-011-JG-v01'
 author: '**De:** Felipe Figueiredo **Para:** Josir Gomes'
-date: '**Data:** 2021-10-27'
+date: '2021-10-27'
 output:
   html_document:
     fig_caption: yes
@@ -388,7 +388,7 @@ Tanto este documento como o plano analítico correspondente (**SAP-2021-011-JG-v
 
 <!-- Este documento pode ser obtido no seguinte endereço: -->
 
-https://github.com/philsf-biostat/SAR-2021-011-JG/
+<https://philsf-biostat.github.io/SAR-2021-011-JG/>
 
 ## Dados utilizados
 
